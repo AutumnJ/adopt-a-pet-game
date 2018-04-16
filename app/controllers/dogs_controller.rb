@@ -8,6 +8,9 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_params)
+    @dog.save
+
+    render json: @dog
   end
 
   def show
