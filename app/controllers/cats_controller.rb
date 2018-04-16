@@ -7,7 +7,12 @@ class CatsController < ApplicationController
   end
 
   def create
-    @cat = Cat.new(cat_params)
+    cat = Cat.new(cat_params)
+    if cat.save
+         render json: cat
+      else
+         render json: { message: cat.errors }, status: 400
+      end
   end
 
   def show
