@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import uuid from 'uuid';
+// import uuid from 'uuid';
 import { connect } from "react-redux";
 // import { Route, Switch, Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/catActions";
+import CatsGrid from './CatsGrid'
+import AdoptedCats from './AdoptedCats'
+import { Link } from 'react-router-dom';
+import { Image } from 'react-bootstrap';
 
 class CatsPage extends Component {
 
@@ -11,38 +15,28 @@ class CatsPage extends Component {
     super();
 
     this.state = {
-      cats: [],
-      zip: '',
+      cats: []
     }
   }
-//   componentDidMount() {
-//     const { cats, actions } = this.props;
 
-//     if (cats.length === 0) {
-//       actions.fetchCats();
-//     }
-//   }
-// }
+  //UPDATE THIS INTERNAL STATE WHEN CATS ARE "ADOPTED"
+  //PASS THAT INTERNAL STATE TO ADOPTED CATS
 
+  // componentDidCatch(error, info) {
+  //   this.setState({ hasError: true})
+  // }
 
-  handleOnSubmit = event => {
-    event.preventDefault();
-    // Destructure addMovie and history from the components props
-    // const cats = Object.assign({}, this.props.cats, { id: uuid() });
-    
-    const { cats, actions } = this.props;
-    console.log("getting cats")
-    actions.fetchCats();
-    console.log("got cats")
-    console.log(this.state)
-    //update state 
-
-    //add cats to DB
-    // actions.addCats(this.state);
+  //REALLY WANT THIS TO BE ON DISAPPEAR?
+  // handleOnSubmit = event => {
+  //   event.preventDefault();
+  //   actions.deleteCat(id);
+    //update state: remove cats that disappear
 
     //redirect to which route?
     // history.push('/movies')
-  }
+  // }
+
+  //ON CLICK, ADD TO THIS.STATE, WHICH IS PASSED TO CHILD COMPONENT?
 
   // handleOnChange = event => {
   //   this.setState({
@@ -51,12 +45,28 @@ class CatsPage extends Component {
   // }
 
   render(){
-    return (
-      <div>
-        <h1>GET CATS</h1>
-        <button style={{ marginTop: '16px' }} onClick={this.handleOnSubmit} >GetCats</button>
-      </div>
-    );
+    let { cats, actions } = this.props;
+    if (cats.cats.length === 0) {
+      return (
+        <div> 
+          <p>Oops! Maybe all the kitties got homes. Navigate to the <Link to={'/'}>homepage</Link> to adopt again!</p>
+          <Image src="https://autumnj.github.io//assets/images/IMG_5193.JPG" alt="sad kitty" rounded/> 
+        </div>
+      )
+    } else {
+
+    // console.log(this.props.cats.cats.length)
+      return (
+        <div>
+          <h1 className="cats-header"> /\___/\  KITTIES!  /\___/\</h1>
+          <h2><small className="text-muted">Grab them before they disappear!</small></h2>
+
+          <CatsGrid />
+          <AdoptedCats />
+
+        </div>
+      );
+    }
   }
 }
 
@@ -66,8 +76,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return { actions: bindActionCreators(actions, dispatch) };
-};
+// const mapDispatchToProps = dispatch => {
+//   return { actions: bindActionCreators(actions, dispatch) };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CatsPage);
+export default connect(mapStateToProps)(CatsPage);
+
