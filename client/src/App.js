@@ -27,4 +27,3 @@ export default App;
 
 //MOVE INTO CONTAINERS or COMPONENTS?
 //REMOVE link to?
-//Fix weird link nesting
