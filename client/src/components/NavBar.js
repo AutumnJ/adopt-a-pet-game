@@ -6,7 +6,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 const NavBar = () => {
   return (
     <div style={{ borderBottom: '2px solid #C5CBE3', paddingBottom: '10px', marginBottom: '12px' }}>
-      <Navbar class="navbar navbar-custom">
+      <Navbar className="navbar navbar-custom">
         <Navbar.Header>
           <Navbar.Brand>
              <NavLink to="/">
