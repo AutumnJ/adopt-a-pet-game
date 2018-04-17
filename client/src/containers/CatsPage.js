@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/catActions";
 import CatsGrid from './CatsGrid'
-import AdoptedCats from './AdoptedCats'
+import { CatsPageError } from '../components/CatsPageError'
 import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 
@@ -46,12 +46,9 @@ class CatsPage extends Component {
 
   render(){
     let { cats, actions } = this.props;
-    if (cats.cats.length === 0) {
+    if (cats.length === 0) {
       return (
-        <div> 
-          <p>Oops! Maybe all the kitties got homes. Navigate to the <Link to={'/'}>homepage</Link> to adopt again!</p>
-          <Image src="https://autumnj.github.io//assets/images/IMG_5193.JPG" alt="sad kitty" rounded/> 
-        </div>
+        <CatsPageError />
       )
     } else {
 
@@ -62,7 +59,6 @@ class CatsPage extends Component {
           <h2><small className="text-muted">Grab them before they disappear!</small></h2>
 
           <CatsGrid />
-          <AdoptedCats />
 
         </div>
       );
