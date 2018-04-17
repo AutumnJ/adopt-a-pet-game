@@ -1,7 +1,10 @@
 class CatsController < ApplicationController
 
   def index
-    @cats = Cat.find_by(user_id: params[:user_id])
+    # @cats = Cat.find_by(user_id: params[:user_id])
+    #Or should this just return the current user's cats?
+
+    @cats = Cat.all
 
     render json: @cats
   end
