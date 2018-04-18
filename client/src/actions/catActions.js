@@ -19,10 +19,10 @@ import { staticCats } from '../data'
 //   }
 // }
 
-const addCat = (cat) => {
+const addCat = (cats) => {
   return {
     type: "CREATE_CAT",
-    payload: staticCats
+    payload: cats
   };
 };
 
@@ -70,34 +70,32 @@ const createCat = (cat) => {
 
 //Comment the below back in to start pulling from external API
 
-// export const fetchCats = () => {
-//   return async dispatch => {
-//     return fetch(`${process.env.REACT_APP_EXTERNAL_API_URL}&location=60625&format=json&animal=cat&count=5`)
-//       .then(response => response.json())
-//       .then(function(cats) {
-//         let mappedResponse = mapCats(cats);
-//         return mappedResponse
-//       })
-//       .then(async (mappedResponse) => {
-//         let kitties = await Promise.all(mappedResponse.map((cat) => {
-//           return createCat(cat);
-//         }))
-//         return kitties
-//       })
-//       .then(function(kitties) {
-//         kitties.forEach(cat => {
-//           dispatch(addCat(cat))
-//         })
-//       })
-//       .catch(error => console.log(error));
-//   };
-// };
+export const fetchCats = (zip) => {
+  return async dispatch => {
+    return fetch(`${process.env.REACT_APP_EXTERNAL_API_URL}&location=${zip}&format=json&animal=cat&count=16`)
+      .then(response => response.json())
+      .then(function(cats) {
+        let mappedResponse = mapCats(cats);
+        return mappedResponse
+      })
+      .then(async (mappedResponse) => {
+        let kitties = await Promise.all(mappedResponse.map((cat) => {
+          return createCat(cat);
+        }))
+        return kitties
+      })
+      .then(function(kitties) {
+          dispatch(addCat(kitties))
+        })
+      .catch(error => console.log(error));
+  };
+};
 
 //from the below, it looks like I can dispatch all the cats at once, in the above fetch 
 //fire off action to clean current state as well & remove items from DB
 //ONLY USING THIS TO DISPATCH USING MY DATA FILE:
-export const fetchCats = () => {
-  return dispatch => {
-      dispatch(addCat())
-    }
-};
+// export const fetchCats = () => {
+//   return dispatch => {
+//       dispatch(addCat())
+//     }
+// };
