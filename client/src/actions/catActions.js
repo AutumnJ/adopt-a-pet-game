@@ -94,6 +94,7 @@ const createCat = (cat) => {
 // };
 
 //from the below, it looks like I can dispatch all the cats at once, in the above fetch 
+//fire off action to clean current state as well & remove items from DB
 //ONLY USING THIS TO DISPATCH USING MY DATA FILE:
 export const fetchCats = () => {
   return dispatch => {
