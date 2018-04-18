@@ -7,26 +7,44 @@ import * as actions from "../actions/catActions";
 import { Table } from 'react-bootstrap';
 import '../App.css';
 import CatGridItem from '../components/CatGridItem'
-import IMG_5695 from '../IMG_5695.jpg'
-import Adopted from '../Adopted.png'
+import IMG_5695 from '../lib/IMG_5695.jpg'
+import Adopted from '../lib/Adopted.png'
 import AdoptedCats from './AdoptedCats'
 
 class CatsGrid extends Component {
 
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
 
       this.state = {
-        cats: [],
+        cats: this.mapCats(this.props.cats),
         adoptedCats: []
       }
     }
 
     //Should this just go in constructor?
-    componentWillMount() {
+    // componentWillMount() {
+    //   this.setState({
+    //     cats: this.props.cats.cats,
+    //     adoptedCats: []
+    //   })
+    // }
+
+    mapCats(cats) {
+      let newArray = []
+
+      cats.forEach(cat => {
+        newArray.push(Object.assign({}, cat))
+      })
+      console.log("NEW ARRAY")
+      console.log(newArray)
+      return newArray;
+    }
+
+    componentWillUnmount() {
       this.setState({
-        cats: this.props.cats.cats,
-        adoptedCats: []
+        cats: [],
+        adoptedCats: [],
       })
     }
 
@@ -34,6 +52,8 @@ class CatsGrid extends Component {
       event.preventDefault();
       const { id } = event.target;
       const { cats, adoptedCats } = this.state
+      console.log("in event")
+      console.log(cats)
 
       const kitty = cats.find( cat => cat.id === parseInt(id) );
       const kittyInd = cats.findIndex( cat => cat.id === parseInt(id));
@@ -77,13 +97,13 @@ class CatsGrid extends Component {
     }
 
     render(){
-    const { cats, id } = this.props.cats;
+    const { cats } = this.state;
     // console.log("cats round 1:")
     // console.log(cats)
     // console.log("cat state round 1:" )
     // console.log(this.state)
-
-
+    console.log("grid")
+    console.log(this.state)
     return (
       <div>
         <h4>GO!</h4>
@@ -121,14 +141,18 @@ class CatsGrid extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    cats: state.cats
-  };
-};
+//back this up a level and just pass the state in to this form as props?
 
-const mapDispatchToProps = dispatch => {
-  return { actions: bindActionCreators(actions, dispatch) };
-};
+// const mapStateToProps = state => {
+//   return {
+//     cats: state.cats
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CatsGrid);
+// const mapDispatchToProps = dispatch => {
+//   return { actions: bindActionCreators(actions, dispatch) };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(CatsGrid);
+
+export default CatsGrid;
