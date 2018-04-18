@@ -39,13 +39,23 @@
     border: 5px dotted #C5CBE3;
 }
 
-.thumbnail h5, .thumbnail p {
+.thumbnail h5 {
   text-align: left;
+}
+
+.thumbnail p {
+
 }
 
 .navbar-default .navbar-brand, .navbar a {
   color: #4056A1;
+  text-decoration: none;
 }
 .navbar {
   background-color: #8E8D8A;
+}
+
+.cats-header a {
+  color: #4056A1;
+  text-decoration: none;
 }
