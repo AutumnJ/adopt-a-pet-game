@@ -62,6 +62,7 @@ class QuestionPage extends Component {
     //NEED TO CALL DIFFERENT ACTION BASED ON WHICH BOX IS CHECKED.
     const { cats, actions } = this.props;
     const { animal, zip } = this.state;
+    console.log(zip)
 
     //check if cats has values already -> if so, dispatch action to erase those from db
 
@@ -69,9 +70,11 @@ class QuestionPage extends Component {
       console.log("ADD IN DOG FETCH ACTION")
     } else {
 
-    actions.fetchCats();
+    actions.fetchCats(zip);
 
-    this.props.history.push('/cats');
+    setTimeout = () => { this.props.history.push('/cats'); }, 5000;
+
+    
   }
     //update state 
 
