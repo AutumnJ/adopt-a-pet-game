@@ -15,7 +15,7 @@ class CatsPage extends Component {
     super();
 
     this.state = {
-      cats: []
+      cats: [],
     }
   }
 
@@ -44,22 +44,34 @@ class CatsPage extends Component {
   //   });
   // }
 
+  // componentDidMount() {
+  //   this.setState({
+  //     cats: this.props.cats,
+  //   })
+  // }
+
+  //  componentWillUnmount() {
+  //   this.setState({
+  //     cats: [],
+  //   })
+  // }
+
   render(){
-    let { cats, actions } = this.props;
-    if (cats.length === 0) {
+    console.log(this.state)
+    console.log(this.props.cats)
+    if (this.props.cats === []) {
       return (
         <CatsPageError />
       )
     } else {
-
     // console.log(this.props.cats.cats.length)
       return (
+
         <div>
           <h1 className="cats-header"> /\___/\  KITTIES!  /\___/\</h1>
           <h2><small className="text-muted">Grab them before they disappear!</small></h2>
 
-          <CatsGrid />
-
+          <CatsGrid cats={this.props.cats.cats}/>
         </div>
       );
     }
@@ -77,4 +89,5 @@ const mapStateToProps = state => {
 // };
 
 export default connect(mapStateToProps)(CatsPage);
+// export default CatsPage;
 
