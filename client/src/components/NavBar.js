@@ -6,9 +6,9 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 const NavBar = () => {
   return (
     <div style={{ borderBottom: '2px solid #C5CBE3', paddingBottom: '10px', marginBottom: '12px' }}>
-      <Navbar className="navbar navbar-custom">
+      <Navbar>
         <Navbar.Header>
-          <Navbar.Brand>
+          <Navbar.Brand id="nav-header">
              <NavLink to="/">
               Home
             </NavLink>
@@ -21,9 +21,18 @@ const NavBar = () => {
             </NavLink>
           </NavItem>
         </Nav>
+        <Nav>
+          <NavItem eventKey={1}>
+            <NavLink to="/randompet">
+              Random Pet
+            </NavLink>
+          </NavItem>
+        </Nav>
       </Navbar>
     </div>
   );
 }
 
 export default NavBar;
+
+        
