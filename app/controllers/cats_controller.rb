@@ -35,6 +35,7 @@ class CatsController < ApplicationController
    private
     def cat_params
        params.permit(
+        :cat,
         :name, 
         :age, 
         :size, 
