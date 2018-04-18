@@ -19,14 +19,20 @@ class AdoptedCats extends Component {
     if (this.state.adopted[0]) {
       return (
         <div>
-          <h1 className="cats-header">"You got me!<small className="text-muted">Now take me home!</small>"</h1>
-          <AdoptedCatsGridItems cats={this.state.adopted} />
+          <div className="cats-header">
+            <h1>"You got me!"</h1>
+            <h2><small className="text-muted">Now take me home!"</small></h2>
+          </div>
+          <div style={{"paddingTop" : "10px"}}>
+            <AdoptedCatsGridItems cats={this.state.adopted} />
+          </div>
         </div>
       );
     } else {
       return (
-        <div>
-          <h1 className="cats-header">"You got me!<small className="text-muted">Now take me home!</small>"</h1>
+        <div className="cats-header">
+          <h1>"You got me!"</h1>
+          <h2><small className="text-muted">"Now take me home!"</small></h2>
         </div>
       )
     }
