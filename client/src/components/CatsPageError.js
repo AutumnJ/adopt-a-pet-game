@@ -5,9 +5,14 @@ import IMG_5695LG from '../lib/IMG_5695LG.jpg'
 
 export const CatsPageError = () => {
   return (
-    <div> 
-      <p>Oops! Maybe all the kitties got homes. Navigate to the <Link to={'/'}>homepage</Link> to adopt again!</p>
-      <Image src={IMG_5695LG} alt="sad kitty" rounded/> 
+    <div>
+      <div className="cats-header">
+        <h2><small className="text-muted">Oops! Maybe all the kitties got homes.</small></h2>
+        <h4>Navigate to the <Link to={'/'}>homepage</Link> to adopt again!</h4>
+      </div>
+      <div style={{"paddingTop" : "10px"}}>
+        <Image src={IMG_5695LG} alt="sad kitty" rounded/> 
+      </div>
     </div>
   )
 }
