@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
-import IMG_5695LG from '../IMG_5695LG.jpg'
+import IMG_5695LG from '../lib/IMG_5695LG.jpg'
 
 export const CatsPageError = () => {
   return (
