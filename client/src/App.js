@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import CatsPage from "./containers/CatsPage";
 import QuestionPage from "./containers/QuestionPage";
+import RandomPetPage from "./containers/RandomPetPage";
 
 //Get rid of NavBar?
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
           <NavBar />
           <Route exact path='/' component={QuestionPage} />
           <Route exact path='/cats' component={CatsPage} />
+          <Route exact path="/randompet" component={RandomPetPage} />
         </div>
       </Router>
     );
