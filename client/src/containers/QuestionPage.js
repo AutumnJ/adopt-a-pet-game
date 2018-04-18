@@ -19,7 +19,7 @@ class QuestionPage extends Component {
       formErrors: {zip: '', animal: ''},
       zipValid: false,
       animalValid: true,
-      formValid: false
+      formValid: false,
     }
   }
 
@@ -68,8 +68,11 @@ class QuestionPage extends Component {
     if (animal === 'dog') {
       console.log("ADD IN DOG FETCH ACTION")
     } else {
+
     actions.fetchCats();
-    }
+
+    this.props.history.push('/cats');
+  }
     //update state 
 
     //add cats to DB
@@ -78,20 +81,21 @@ class QuestionPage extends Component {
     //Add in dog route redirect
 
     //is reset of state required?
-    this.props.history.push('/cats')
+    // this.props.history.push('/cats')
     this.setState({
       animal: '',
       zip: '',
       formErrors: {zip: '', animal: ''},
       zipValid: false,
       animalValid: true,
-      formValid: false
+      formValid: false,
     });
   }
 
   //prevent submit unless valid zip?
   render(){
     const { zip, animal } = this.state;
+
     return (
       <div>
         <header className="App-header">
