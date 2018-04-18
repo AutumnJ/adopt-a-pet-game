@@ -10,6 +10,7 @@ import CatGridItem from '../components/CatGridItem'
 import IMG_5695 from '../lib/IMG_5695.jpg'
 import Adopted from '../lib/Adopted.png'
 import AdoptedCats from './AdoptedCats'
+import { CatsPageError } from '../components/CatsPageError'
 
 class CatsGrid extends Component {
 
@@ -104,40 +105,44 @@ class CatsGrid extends Component {
     // console.log(this.state)
     console.log("grid")
     console.log(this.state)
-    return (
-      <div>
-        <h4>GO!</h4>
-         <Table bordered condensed>
-          <tbody id="table-container">
-            <tr>
-              <CatGridItem photo={cats[0].photo} onClick={this.handleOnClick} id={cats[0].id} />
-              <CatGridItem photo={cats[1].photo} onClick={this.handleOnClick} id={cats[1].id} />
-              <CatGridItem photo={cats[2].photo} onClick={this.handleOnClick} id={cats[2].id} />
-              <CatGridItem photo={cats[3].photo} onClick={this.handleOnClick} id={cats[3].id} />
-            </tr>
-            <tr>
-              <CatGridItem photo={cats[4].photo} onClick={this.handleOnClick} id={cats[4].id}/>
-              <CatGridItem photo={cats[5].photo} onClick={this.handleOnClick} id={cats[5].id} />
-              <CatGridItem photo={cats[6].photo} onClick={this.handleOnClick} id={cats[6].id} />
-              <CatGridItem photo={cats[7].photo} onClick={this.handleOnClick} id={cats[7].id} />
-            </tr>
-            <tr>
-              <CatGridItem photo={cats[8].photo} onClick={this.handleOnClick} id={cats[8].id} />
-              <CatGridItem photo={cats[9].photo} onClick={this.handleOnClick} id={cats[9].id} />
-              <CatGridItem photo={cats[10].photo} onClick={this.handleOnClick} id={cats[10].id} />
-              <CatGridItem photo={cats[11].photo} onClick={this.handleOnClick} id={cats[11].id} />
-            </tr>
-            <tr>
-              <CatGridItem photo={cats[12].photo} onClick={this.handleOnClick} id={cats[12].id} />
-              <CatGridItem photo={cats[13].photo} onClick={this.handleOnClick} id={cats[13].id} />
-              <CatGridItem photo={cats[14].photo} onClick={this.handleOnClick} id={cats[14].id} />
-              <CatGridItem photo={cats[15].photo} onClick={this.handleOnClick} id={cats[15].id} />
-            </tr>
-          </tbody>
-        </Table>
-        <AdoptedCats adopted={this.state.adoptedCats}/>
-      </div>
-    );
+
+    if (this.state.cats.length === 0) {
+      return(<CatsPageError />)
+    } else {
+      return (
+        <div style={{"paddingTop" : "10px"}} >
+           <Table bordered condensed>
+            <tbody id="table-container">
+              <tr>
+                <CatGridItem photo={cats[0].photo} onClick={this.handleOnClick} id={cats[0].id} />
+                <CatGridItem photo={cats[1].photo} onClick={this.handleOnClick} id={cats[1].id} />
+                <CatGridItem photo={cats[2].photo} onClick={this.handleOnClick} id={cats[2].id} />
+                <CatGridItem photo={cats[3].photo} onClick={this.handleOnClick} id={cats[3].id} />
+              </tr>
+              <tr>
+                <CatGridItem photo={cats[4].photo} onClick={this.handleOnClick} id={cats[4].id}/>
+                <CatGridItem photo={cats[5].photo} onClick={this.handleOnClick} id={cats[5].id} />
+                <CatGridItem photo={cats[6].photo} onClick={this.handleOnClick} id={cats[6].id} />
+                <CatGridItem photo={cats[7].photo} onClick={this.handleOnClick} id={cats[7].id} />
+              </tr>
+              <tr>
+                <CatGridItem photo={cats[8].photo} onClick={this.handleOnClick} id={cats[8].id} />
+                <CatGridItem photo={cats[9].photo} onClick={this.handleOnClick} id={cats[9].id} />
+                <CatGridItem photo={cats[10].photo} onClick={this.handleOnClick} id={cats[10].id} />
+                <CatGridItem photo={cats[11].photo} onClick={this.handleOnClick} id={cats[11].id} />
+              </tr>
+              <tr>
+                <CatGridItem photo={cats[12].photo} onClick={this.handleOnClick} id={cats[12].id} />
+                <CatGridItem photo={cats[13].photo} onClick={this.handleOnClick} id={cats[13].id} />
+                <CatGridItem photo={cats[14].photo} onClick={this.handleOnClick} id={cats[14].id} />
+                <CatGridItem photo={cats[15].photo} onClick={this.handleOnClick} id={cats[15].id} />
+              </tr>
+            </tbody>
+          </Table>
+          <AdoptedCats adopted={this.state.adoptedCats}/>
+        </div>
+      );
+    }
   }
 }
 
