@@ -11,6 +11,14 @@ import { staticCats } from '../data'
 //   };
 // };
 
+// export const clearState = () => {
+//   return {
+//     type: "CLEAR_STATE",
+//     //need to also fire async action to remove from db
+//     //need to add to dogs
+//   }
+// }
+
 const addCat = (cat) => {
   return {
     type: "CREATE_CAT",
