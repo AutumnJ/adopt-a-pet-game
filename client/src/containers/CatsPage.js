@@ -57,9 +57,10 @@ class CatsPage extends Component {
   // }
 
   render(){
-    console.log(this.state)
-    console.log(this.props.cats)
-    if (this.props.cats === []) {
+    // console.log(this.state)
+    // console.log("this.props.cats")
+    // console.log(this.props.cats)
+    if (!this.props.cats[0]) {
       return (
         <CatsPageError />
       )
@@ -68,10 +69,12 @@ class CatsPage extends Component {
       return (
 
         <div>
-          <h1 className="cats-header"> /\___/\  KITTIES!  /\___/\</h1>
-          <h2><small className="text-muted">Grab them before they disappear!</small></h2>
+          <div className="cats-header">
+            <h1> /\___/\  KITTIES!  /\___/\</h1>
+            <h2><small className="text-muted">Grab them before they disappear!</small></h2>
+          </div>
 
-          <CatsGrid cats={this.props.cats.cats}/>
+          <CatsGrid cats={this.props.cats} />
         </div>
       );
     }
@@ -80,7 +83,7 @@ class CatsPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    cats: state.cats
+    cats: state.cats.cats
   };
 };
 
