@@ -28,6 +28,13 @@ const addCat = (cats) => {
   };
 };
 
+const getCat = (cat) => {
+  return {
+    type: "ADD_CAT",
+    payload: cat
+  };
+};
+
 const mapCats = (cats) => {
   let catList = cats.petfinder.pets.pet
 
@@ -43,6 +50,7 @@ const mapCats = (cats) => {
     catObj.contact_phone = cat.contact.phone.$t;
     catObj.contact_email = cat.contact.email.$t;
     catObj.contact_city = cat.contact.city.$t;
+    catObj.contact_state = cat.contact.state.$t;
     catObj.photo = photo;
     // catObj.user_id = userId;
     catObj.description = cat.description.$t;
@@ -90,6 +98,15 @@ export const fetchCats = (zip) => {
       .then(function(kitties) {
           dispatch(addCat(kitties))
         })
+      .catch(error => window.alert("Not enough kitties - try a different zip code!"));
+  };
+};
+
+export const fetchRandomCat = () => {
+  return dispatch => {
+    return fetch(`http://localhost:3001/cats/1`)
+      .then(response => response.json())
+      .then(cat => dispatch(getCat(cat)))
       .catch(error => console.log(error));
   };
 };
