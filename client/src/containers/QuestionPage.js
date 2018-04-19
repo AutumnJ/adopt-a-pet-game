@@ -8,6 +8,7 @@ import { fetchDogs } from "../actions/dogActions";
 // import CatsPage from "./CatsPage";
 import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { FormErrors } from "../components/FormErrors"
+import { Redirect } from "react-router";
 
 class QuestionPage extends Component {
 
@@ -21,6 +22,7 @@ class QuestionPage extends Component {
       zipValid: false,
       animalValid: true,
       formValid: false,
+      redirect: '',
     }
   }
 
@@ -57,26 +59,59 @@ class QuestionPage extends Component {
     this.setState({formValid: this.state.zipValid && this.state.animalValid});
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (this.props !== nextProps || this.state !== nextState);
+  }
+
   handleOnSubmit = event => {
     event.preventDefault();
 
     //NEED TO CALL DIFFERENT ACTION BASED ON WHICH BOX IS CHECKED.
     const { cats, actions } = this.props;
     const { animal, zip } = this.state;
+    console.log("before interval")
     console.log(this.props)
+
+    const oldDoggies = this.props.dogs[0] ? JSON.stringify(this.props.dogs[0]) : "none"
+    const oldKitties = this.props.cats[0] ? JSON.stringify(this.props.cats[0]) : "none"
 
     //check if cats has values already -> if so, dispatch action to erase those from db
 
     if (animal === 'dog') {
 
-      actions.fetchDogs(zip);
+      actions.fetchDogs(zip)
+      // setTimeout = () => { this.setState({redirect: 'dog'}); }, 5000;
 
-      setTimeout = () => { this.props.history.push('/dogs'); }, 5000;
+      let interval = setInterval((function(self, oldDoggies){
+        return function(){
+          if (oldDoggies !== JSON.stringify(self.props.dogs[0]) && self.props.dogs[0]) {
+
+            clearInterval(interval);
+            self.setState({redirect: 'dog'});
+          }
+        }
+      })(this, oldDoggies), 500);
+
+
+      
+
+      // setTimeout = () => { this.props.history.push('/dogs'); }, 5000;
 
     } else {
       actions.fetchCats(zip);
 
-      setTimeout = () => { this.props.history.push('/cats'); }, 5000;    
+      let interval = setInterval((function(self, oldKitties){
+        return function(){
+          if (oldKitties !== JSON.stringify(self.props.cats[0]) && self.props.cats[0]) {
+            clearInterval(interval);
+            self.setState({redirect: 'cat'});
+          }
+        }
+      })(this, oldKitties), 500);
+
+      // setTimeout = () => { this.setState({redirect: 'cat'}); }, 5000;
+
+      // setTimeout = () => { this.props.history.push('/cats'); }, 5000;    
   }
     //update state 
 
@@ -94,12 +129,23 @@ class QuestionPage extends Component {
       zipValid: false,
       animalValid: true,
       formValid: false,
+
     });
   }
 
   //prevent submit unless valid zip?
   render(){
-    const { zip, animal } = this.state;
+    const { zip, animal, redirect } = this.state;
+    console.log('redirect')
+    console.log(redirect)
+
+    if (redirect === 'dog' || redirect === 'cat') {
+      return (
+        <div>
+          {redirect === 'cat' ? <Redirect to={`/cats`}/> : <Redirect to={`/dogs`} />}
+        </div>
+      );
+    }
 
     return (
       <div>
@@ -133,7 +179,8 @@ class QuestionPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    cats: state.cats
+    cats: state.cats.cats,
+    dogs: state.dogs.dogs
   };
 };
 
