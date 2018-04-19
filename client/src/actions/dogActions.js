@@ -8,6 +8,13 @@ const addDog = (dogs) => {
   };
 };
 
+const getDog = (dog) => {
+  return {
+    type: "ADD_DOG",
+    payload: dog
+  };
+};
+
 const mapDogs = (dogs) => {
   let dogList = dogs.petfinder.pets.pet
 
@@ -23,6 +30,7 @@ const mapDogs = (dogs) => {
     dogObj.contact_phone = dog.contact.phone.$t;
     dogObj.contact_email = dog.contact.email.$t;
     dogObj.contact_city = dog.contact.city.$t;
+    dogObj.contact_state = dog.contact.state.$t;
     dogObj.photo = photo;
     // dogObj.user_id = userId;
     dogObj.description = dog.description.$t;
@@ -62,6 +70,16 @@ export const fetchDogs = (zip) => {
       .then(function(doggies) {
           dispatch(addDog(doggies))
         })
+      .catch(error => window.alert("Not enough puppers - try a different zip code!"));
+  };
+};
+
+
+export const fetchRandomDog = () => {
+  return dispatch => {
+    return fetch(`http://localhost:3001/dogs/1`)
+      .then(response => response.json())
+      .then(dog => dispatch(getDog(dog)))
       .catch(error => console.log(error));
   };
 };
