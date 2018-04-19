@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import CatsPage from "./containers/CatsPage";
+import DogsPage from "./containers/DogsPage";
 import QuestionPage from "./containers/QuestionPage";
 import RandomPetPage from "./containers/RandomPetPage";
 
@@ -17,6 +18,7 @@ class App extends Component {
           <NavBar />
           <Route exact path='/' component={QuestionPage} />
           <Route exact path='/cats' component={CatsPage} />
+          <Route exact path='/dogs' component={DogsPage} />
           <Route exact path="/randompet" component={RandomPetPage} />
         </div>
       </Router>
