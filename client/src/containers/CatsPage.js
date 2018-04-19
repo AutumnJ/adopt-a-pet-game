@@ -58,8 +58,8 @@ class CatsPage extends Component {
 
   render(){
     // console.log(this.state)
-    // console.log("this.props.cats")
-    // console.log(this.props.cats)
+    console.log("this.props.cats")
+    console.log(this.props)
     if (!this.props.cats[0]) {
       return (
         <PetErrorPage pet={"cat"}/>
