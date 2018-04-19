@@ -59,3 +59,7 @@
   color: #4056A1;
   text-decoration: none;
 }
+
+.nav > li > a {
+  padding: 15px 5px;
+}
