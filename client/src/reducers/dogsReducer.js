@@ -1,13 +1,13 @@
-export default function dogsReducer(state = {dogs:[]}, action) {
+export default function dogsReducer(state = {dogs:[], randomDog: []}, action) {
   switch (action.type) {
     // case 'LOADING_CATS':
     //   return Object.assign({}, state, { loading: true })
     // case 'GET_CATS':
     //   return Object.assign({}, state, { loading: false, cats: action.payload })
     case 'CREATE_DOG':
-      return Object.assign ({}, { dogs: action.payload })
-    case 'CLEAR_STATE':
-      return { dogs:[] }
+      return Object.assign ({}, { ...state, dogs: action.payload })
+    case 'ADD_DOG':
+      return Object.assign ({}, { ...state, randomDog: action.payload })
     default:
       return state;
   }
