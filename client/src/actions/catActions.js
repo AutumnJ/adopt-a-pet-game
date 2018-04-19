@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { staticCats } from '../data'
+//remove staticCats
+import StockKitty from '../lib/StockKitty.png'
 
 //After organized, comment back in external API fetch, internal API data persistence and addCat action
 
@@ -31,6 +33,7 @@ const mapCats = (cats) => {
 
   const mappedList = catList.map(cat => {
     let catObj = {};
+    let photo = cat.media.photos ? cat.media.photos.photo[3].$t : StockKitty;
 
     catObj.name = cat.name.$t;
     catObj.age = cat.age.$t;
@@ -40,7 +43,7 @@ const mapCats = (cats) => {
     catObj.contact_phone = cat.contact.phone.$t;
     catObj.contact_email = cat.contact.email.$t;
     catObj.contact_city = cat.contact.city.$t;
-    catObj.photo = cat.media.photos.photo[3].$t;
+    catObj.photo = photo;
     // catObj.user_id = userId;
     catObj.description = cat.description.$t;
 
@@ -52,7 +55,7 @@ const mapCats = (cats) => {
 //Fix hard-coded userId
 //move URL into .env
 const createCat = (cat) => {
-  return fetch(`http://localhost:3001/users/1/cats`, {
+  return fetch(`http://localhost:3001/cats`, {
     method: "POST",
     headers: {
       "Accept":"application/json",
