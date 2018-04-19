@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/catActions";
 import CatsGrid from './CatsGrid'
-import { CatsPageError } from '../components/CatsPageError'
+import { PetErrorPage } from '../components/PetErrorPage'
 import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 
@@ -62,7 +62,7 @@ class CatsPage extends Component {
     // console.log(this.props.cats)
     if (!this.props.cats[0]) {
       return (
-        <CatsPageError />
+        <PetErrorPage pet={"cat"}/>
       )
     } else {
     // console.log(this.props.cats.cats.length)
