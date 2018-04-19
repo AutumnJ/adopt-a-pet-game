@@ -7,7 +7,7 @@
   height: 80px;
 }
 
-.App-header, .cats-header {
+.App-header, .cats-header, .random-pet-header {
   font-family: "Poppins";
   background-color: #EFE2BA;
   height: 150px;
@@ -63,3 +63,18 @@
 .nav > li > a {
   padding: 15px 5px;
 }
+
+.btn-toolbar {
+  padding-top: 10px;
+  justify-content: center;
+  display: flex;
+}
+
+.random-pet-btn {
+  background-color: #405681;
+}
+
+.pets {
+  padding-top: 10px;
+}
+
