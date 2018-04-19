@@ -23,6 +23,13 @@ const NavBar = () => {
         </Nav>
         <Nav>
           <NavItem eventKey={1}>
+            <NavLink to="/dogs">
+              Dogs
+            </NavLink>
+          </NavItem>
+        </Nav>
+        <Nav>
+          <NavItem eventKey={1}>
             <NavLink to="/randompet">
               Random Pet
             </NavLink>
