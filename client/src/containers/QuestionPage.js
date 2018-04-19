@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { Route, Switch, Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import * as actions from "../actions/catActions";
+import { fetchCats } from "../actions/catActions";
+import { fetchDogs } from "../actions/dogActions";
 // import CatsPage from "./CatsPage";
 import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { FormErrors } from "../components/FormErrors"
@@ -62,19 +63,20 @@ class QuestionPage extends Component {
     //NEED TO CALL DIFFERENT ACTION BASED ON WHICH BOX IS CHECKED.
     const { cats, actions } = this.props;
     const { animal, zip } = this.state;
-    console.log(zip)
+    console.log(this.props)
 
     //check if cats has values already -> if so, dispatch action to erase those from db
 
     if (animal === 'dog') {
-      console.log("ADD IN DOG FETCH ACTION")
+
+      actions.fetchDogs(zip);
+
+      setTimeout = () => { this.props.history.push('/dogs'); }, 5000;
+
     } else {
+      actions.fetchCats(zip);
 
-    actions.fetchCats(zip);
-
-    setTimeout = () => { this.props.history.push('/cats'); }, 5000;
-
-    
+      setTimeout = () => { this.props.history.push('/cats'); }, 5000;    
   }
     //update state 
 
@@ -136,7 +138,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators( { fetchCats, fetchDogs } , dispatch) };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionPage);
