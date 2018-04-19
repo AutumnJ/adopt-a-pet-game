@@ -10,7 +10,7 @@ import CatGridItem from '../components/CatGridItem'
 import IMG_5695 from '../lib/IMG_5695.jpg'
 import Adopted from '../lib/Adopted.png'
 import AdoptedCats from './AdoptedCats'
-import { CatsPageError } from '../components/CatsPageError'
+import { PetErrorPage } from '../components/PetErrorPage'
 
 class CatsGrid extends Component {
 
@@ -31,6 +31,8 @@ class CatsGrid extends Component {
     //   })
     // }
 
+    //can push changes to state object by removing this mapping (or dispatching action to change global state)
+    //intentionally programmed so users can 'replay' several times and see different cats before entering a new zip
     mapCats(cats) {
       let newArray = []
 
@@ -107,7 +109,7 @@ class CatsGrid extends Component {
     console.log(this.state)
 
     if (this.state.cats.length === 0) {
-      return(<CatsPageError />)
+      return(<PetErrorPage pet={"dog"}/>)
     } else {
       return (
         <div style={{"paddingTop" : "10px"}} >
