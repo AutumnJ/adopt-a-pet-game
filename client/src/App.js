@@ -17,9 +17,9 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Route exact path='/' component={QuestionPage} />
-          <Route exact path='/cats' component={CatsPage} />
-          <Route exact path='/dogs' component={DogsPage} />
-          <Route exact path="/randompet" component={RandomPetPage} />
+          <Route path='/cats' component={CatsPage} />
+          <Route path='/dogs' component={DogsPage} />
+          <Route path="/randompet" component={RandomPetPage} />
         </div>
       </Router>
     );
