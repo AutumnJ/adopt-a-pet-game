@@ -14,7 +14,7 @@ class DogsController < ApplicationController
   end
 
   def show
-    @dog = Dog.find_by(user_id: params[:user_id], id: params[:id])
+    @dog = Dog.random
 
     render json: @dog
   end

@@ -19,7 +19,7 @@ class CatsController < ApplicationController
   end
 
   def show
-    @cat = Cat.find_by(user_id: params[:user_id], id: params[:id])
+    @cat = Cat.random
 
     render json: @cat
   end
