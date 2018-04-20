@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-// import uuid from 'uuid';
-import { connect } from "react-redux";
-// import { Route, Switch, Link } from "react-router-dom";
-import { bindActionCreators } from "redux";
-import * as actions from "../actions/dogActions";
 import { Table } from 'react-bootstrap';
-import '../App.css';
+
 import CatGridItem from '../components/CatGridItem'
 import LittlePup from '../lib/LittlePup.jpg'
 import Adopted from '../lib/Adopted.png'
@@ -23,14 +18,6 @@ class DogsGrid extends Component {
       }
     }
 
-    //Should this just go in constructor?
-    // componentWillMount() {
-    //   this.setState({
-    //     dogs: this.props.dogs.dogs,
-    //     adopteddogs: []
-    //   })
-    // }
-
     mapDogs(dogs) {
       let newArray = []
 
@@ -42,20 +29,19 @@ class DogsGrid extends Component {
       return newArray;
     }
 
-    componentWillUnmount() {
-      this.setState({
-        dogs: [],
-        adoptedDogs: [],
-      })
-    }
+    // componentWillUnmount() {
+    //   this.setState({
+    //     dogs: [],
+    //     adoptedDogs: [],
+    //   })
+    // }
 
     handleOnClick = (event) => {
       event.preventDefault();
       const { id } = event.target;
       const { dogs, adoptedDogs } = this.state
 
-      const doggo = dogs.find( dog => dog.id === parseInt(id) );
-      const doggoInd = dogs.findIndex( dog => dog.id === parseInt(id));
+      const doggo = dogs.find( dog => dog.id === parseInt(id, 10) );
       if (doggo.photo !== "/static/media/LittlePup.df8ef6dd.jpg" && doggo.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedDog = Object.assign({}, doggo);
         adoptedDogs.push(adoptedDog);
@@ -82,7 +68,6 @@ class DogsGrid extends Component {
 
         this.setState({
           dogs: dogs,
-          // adopteddogs: adopteddogs
         })
       } else if (dogs.find( dog => dog.photo !== "/static/media/LittlePup.df8ef6dd.jpg" && dog.photo !== "/static/media/Adopted.e366e9ec.png")) {
         this.disappearDog(dogs);
@@ -97,18 +82,12 @@ class DogsGrid extends Component {
 
     render(){
     const { dogs } = this.state;
-    // console.log("dogs round 1:")
-    // console.log(dogs)
-    // console.log("cat state round 1:" )
-    // console.log(this.state)
-    console.log("grid")
-    console.log(this.state)
 
     if (this.state.dogs.length === 0) {
       return(<PetErrorPage pet={"dog"}/>)
     } else {
       return (
-        <div style={{"paddingTop" : "10px"}} >
+        <div style={{"paddingTop" : "15px"}} >
            <Table bordered condensed>
             <tbody id="table-container">
               <tr>
@@ -143,19 +122,5 @@ class DogsGrid extends Component {
     }
   }
 }
-
-//back this up a level and just pass the state in to this form as props?
-
-// const mapStateToProps = state => {
-//   return {
-//     dogs: state.dogs
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return { actions: bindActionCreators(actions, dispatch) };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(dogsGrid);
 
 export default DogsGrid;

@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-// import uuid from 'uuid';
-import { connect } from "react-redux";
-// import { Route, Switch, Link } from "react-router-dom";
-import { bindActionCreators } from "redux";
-import * as actions from "../actions/catActions";
 import { Table } from 'react-bootstrap';
-import '../App.css';
+
 import CatGridItem from '../components/CatGridItem'
 import IMG_5695 from '../lib/IMG_5695.jpg'
 import Adopted from '../lib/Adopted.png'
@@ -22,17 +17,7 @@ class CatsGrid extends Component {
         adoptedCats: []
       }
     }
-
-    //Should this just go in constructor?
-    // componentWillMount() {
-    //   this.setState({
-    //     cats: this.props.cats.cats,
-    //     adoptedCats: []
-    //   })
-    // }
-
-    //can push changes to state object by removing this mapping (or dispatching action to change global state)
-    //intentionally programmed so users can 'replay' several times and see different cats before entering a new zip
+    
     mapCats(cats) {
       let newArray = []
 
@@ -44,12 +29,12 @@ class CatsGrid extends Component {
       return newArray;
     }
 
-    componentWillUnmount() {
-      this.setState({
-        cats: [],
-        adoptedCats: [],
-      })
-    }
+    // componentWillUnmount() {
+    //   this.setState({
+    //     cats: [],
+    //     adoptedCats: [],
+    //   })
+    // }
 
     handleOnClick = (event) => {
       event.preventDefault();
@@ -58,8 +43,7 @@ class CatsGrid extends Component {
       console.log("in event")
       console.log(cats)
 
-      const kitty = cats.find( cat => cat.id === parseInt(id) );
-      const kittyInd = cats.findIndex( cat => cat.id === parseInt(id));
+      const kitty = cats.find( cat => cat.id === parseInt(id, 10) );
       if (kitty.photo !== "/static/media/IMG_5695.7d23606d.jpg" && kitty.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedKitty = Object.assign({}, kitty);
         adoptedCats.push(adoptedKitty);
@@ -86,7 +70,6 @@ class CatsGrid extends Component {
 
         this.setState({
           cats: cats,
-          // adoptedCats: adoptedCats
         })
       } else if (cats.find( cat => cat.photo !== "/static/media/IMG_5695.7d23606d.jpg" && cat.photo !== "/static/media/Adopted.e366e9ec.png")) {
         this.disappearCat(cats);
@@ -101,18 +84,12 @@ class CatsGrid extends Component {
 
     render(){
     const { cats } = this.state;
-    // console.log("cats round 1:")
-    // console.log(cats)
-    // console.log("cat state round 1:" )
-    // console.log(this.state)
-    console.log("grid")
-    console.log(this.state)
 
     if (this.state.cats.length === 0) {
       return(<PetErrorPage pet={"dog"}/>)
     } else {
       return (
-        <div style={{"paddingTop" : "10px"}} >
+        <div style={{"paddingTop" : "15px"}} >
            <Table bordered condensed>
             <tbody id="table-container">
               <tr>
@@ -147,19 +124,5 @@ class CatsGrid extends Component {
     }
   }
 }
-
-//back this up a level and just pass the state in to this form as props?
-
-// const mapStateToProps = state => {
-//   return {
-//     cats: state.cats
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return { actions: bindActionCreators(actions, dispatch) };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(CatsGrid);
 
 export default CatsGrid;
