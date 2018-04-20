@@ -2,16 +2,19 @@ import React from 'react';
 import '../App.css';
 // import { Image } from 'react-bootstrap';
 import { Thumbnail } from 'react-bootstrap';
+import StockPuppy from '../lib/StockPuppy.png'
  
 export const RandomDog = ({ dog }) => {
   //cound do <Image src={photo} responsive rounded alt="KITTIES"/>
+
   if (dog === null) {
     return (
       <p></p>
     )
   } else {
+    const photo = ( dog.photo === null ? StockPuppy : dog.photo )
     return (
-      <Thumbnail src={dog.photo} alt={dog.name}>
+      <Thumbnail src={photo} alt={dog.name}>
         <h3>{dog.name}</h3>
         <h5>Breed: {dog.breed}</h5>
         <h5>Age: {dog.age}</h5>
