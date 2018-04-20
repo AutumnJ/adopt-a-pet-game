@@ -1,11 +1,9 @@
 import React from 'react';
-import '../App.css';
-// import { Image } from 'react-bootstrap';
+
 import { Thumbnail } from 'react-bootstrap';
 import StockPuppy from '../lib/StockPuppy.png'
  
 export const RandomDog = ({ dog }) => {
-  //cound do <Image src={photo} responsive rounded alt="KITTIES"/>
 
   if (dog === null) {
     return (
@@ -26,11 +24,5 @@ export const RandomDog = ({ dog }) => {
       </Thumbnail>
     )
   }
- 
-  // return (
-  //   <td style={{'width' : '25%', 'height' : '25%'}}>
-  //     {renderPet}
-  //   </td>
-  // );
 
 };
