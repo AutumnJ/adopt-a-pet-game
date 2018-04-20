@@ -1,18 +1,14 @@
 import React from 'react';
-import '../App.css';
-// import { Image } from 'react-bootstrap';
 import { Grid, Row, Col, Thumbnail } from 'react-bootstrap';
  
 const AdoptedcatsGridItem = ({ cats }) => {
-  console.log(cats)
-  //cound do <Image src={photo} responsive rounded alt="KITTIES"/>
-  // const renderPet = <img src={ photo } id={ id } style={{'height' : '75%', 'width' : '85%', 'objectFit' : 'contain'}} onClick={ onClick } alt="KITTIES"/>
+
     if (cats.length === 1) {
       return (
         <Grid>
           <Row>
             <Col xs={6} md={4}>
-              <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+              <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                 <h3>{cats[0].name}</h3>
                 <h5>Breed: {cats[0].breed}</h5>
                 <h5>Age: {cats[0].age}</h5>
@@ -30,7 +26,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
         <Grid>
           <Row>
             <Col xs={6} md={4}>
-              <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+              <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                 <h3>{cats[0].name}</h3>
                 <h5>Breed: {cats[0].breed}</h5>
                 <h5>Age: {cats[0].age}</h5>
@@ -41,7 +37,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
               </Thumbnail>
             </Col>
             <Col xs={6} md={4}>
-              <Thumbnail src={cats[1].photo} alt={cats[1].name}>
+              <Thumbnail className="grid" src={cats[1].photo} alt={cats[1].name}>
                 <h3>{cats[1].name}</h3>
                 <h5>Breed: {cats[1].breed}</h5>
                 <h5>Age: {cats[1].age}</h5>
@@ -59,7 +55,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
           <Grid>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+                <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                   <h3>{cats[0].name}</h3>
                   <h5>Breed: {cats[0].breed}</h5>
                   <h5>Age: {cats[0].age}</h5>
@@ -70,7 +66,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[1].photo} alt={cats[1].name}>
+                <Thumbnail className="grid" src={cats[1].photo} alt={cats[1].name}>
                   <h3>{cats[1].name}</h3>
                   <h5>Breed: {cats[1].breed}</h5>
                   <h5>Age: {cats[1].age}</h5>
@@ -81,7 +77,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[2].photo} alt={cats[2].name}>
+                <Thumbnail className="grid" src={cats[2].photo} alt={cats[2].name}>
                   <h3>{cats[2].name}</h3>
                   <h5>Breed: {cats[2].breed}</h5>
                   <h5>Age: {cats[2].age}</h5>
@@ -100,7 +96,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
           <div>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+                <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                   <h3>{cats[0].name}</h3>
                   <h5>Breed: {cats[0].breed}</h5>
                   <h5>Age: {cats[0].age}</h5>
@@ -111,7 +107,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[1].photo} alt={cats[1].name}>
+                <Thumbnail className="grid" src={cats[1].photo} alt={cats[1].name}>
                   <h3>{cats[1].name}</h3>
                   <h5>Breed: {cats[1].breed}</h5>
                   <h5>Age: {cats[1].age}</h5>
@@ -122,7 +118,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[2].photo} alt={cats[2].name}>
+                <Thumbnail className="grid" src={cats[2].photo} alt={cats[2].name}>
                   <h3>{cats[2].name}</h3>
                   <h5>Breed: {cats[2].breed}</h5>
                   <h5>Age: {cats[2].age}</h5>
@@ -135,7 +131,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
             </Row>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[3].photo} alt={cats[3].name}>
+                <Thumbnail className="grid" src={cats[3].photo} alt={cats[3].name}>
                   <h3>{cats[3].name}</h3>
                   <h5>Breed: {cats[3].breed}</h5>
                   <h5>Age: {cats[3].age}</h5>
@@ -155,7 +151,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
           <div>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+                <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                   <h3>{cats[0].name}</h3>
                   <h5>Breed: {cats[0].breed}</h5>
                   <h5>Age: {cats[0].age}</h5>
@@ -166,7 +162,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[1].photo} alt={cats[1].name}>
+                <Thumbnail className="grid" src={cats[1].photo} alt={cats[1].name}>
                   <h3>{cats[1].name}</h3>
                   <h5>Breed: {cats[1].breed}</h5>
                   <h5>Age: {cats[1].age}</h5>
@@ -177,7 +173,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[2].photo} alt={cats[2].name}>
+                <Thumbnail className="grid" src={cats[2].photo} alt={cats[2].name}>
                   <h3>{cats[2].name}</h3>
                   <h5>Breed: {cats[2].breed}</h5>
                   <h5>Age: {cats[2].age}</h5>
@@ -190,7 +186,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
             </Row>
             <Row>
             <Col xs={6} md={4}>
-                <Thumbnail src={cats[3].photo} alt={cats[3].name}>
+                <Thumbnail className="grid" src={cats[3].photo} alt={cats[3].name}>
                   <h3>{cats[3].name}</h3>
                   <h5>Breed: {cats[3].breed}</h5>
                   <h5>Age: {cats[3].age}</h5>
@@ -201,7 +197,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[4].photo} alt={cats[4].name}>
+                <Thumbnail className="grid" src={cats[4].photo} alt={cats[4].name}>
                   <h3>{cats[4].name}</h3>
                   <h5>Breed: {cats[4].breed}</h5>
                   <h5>Age: {cats[4].age}</h5>
@@ -221,7 +217,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
           <div>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+                <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                   <h3>{cats[0].name}</h3>
                   <h5>Breed: {cats[0].breed}</h5>
                   <h5>Age: {cats[0].age}</h5>
@@ -232,7 +228,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[1].photo} alt={cats[1].name}>
+                <Thumbnail className="grid" src={cats[1].photo} alt={cats[1].name}>
                   <h3>{cats[1].name}</h3>
                   <h5>Breed: {cats[1].breed}</h5>
                   <h5>Age: {cats[1].age}</h5>
@@ -243,7 +239,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[2].photo} alt={cats[2].name}>
+                <Thumbnail className="grid" src={cats[2].photo} alt={cats[2].name}>
                   <h3>{cats[2].name}</h3>
                   <h5>Breed: {cats[2].breed}</h5>
                   <h5>Age: {cats[2].age}</h5>
@@ -256,7 +252,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
             </Row>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[3].photo} alt={cats[3].name}>
+                <Thumbnail className="grid" src={cats[3].photo} alt={cats[3].name}>
                   <h3>{cats[3].name}</h3>
                   <h5>Breed: {cats[3].breed}</h5>
                   <h5>Age: {cats[3].age}</h5>
@@ -267,7 +263,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[4].photo} alt={cats[4].name}>
+                <Thumbnail className="grid" src={cats[4].photo} alt={cats[4].name}>
                   <h3>{cats[4].name}</h3>
                   <h5>Breed: {cats[4].breed}</h5>
                   <h5>Age: {cats[4].age}</h5>
@@ -278,7 +274,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[5].photo} alt={cats[5].name}>
+                <Thumbnail className="grid" src={cats[5].photo} alt={cats[5].name}>
                   <h3>{cats[5].name}</h3>
                   <h5>Breed: {cats[5].breed}</h5>
                   <h5>Age: {cats[5].age}</h5>
@@ -298,7 +294,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
           <div>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+                <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                   <h3>{cats[0].name}</h3>
                   <h5>Breed: {cats[0].breed}</h5>
                   <h5>Age: {cats[0].age}</h5>
@@ -309,7 +305,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[1].photo} alt={cats[1].name}>
+                <Thumbnail className="grid" src={cats[1].photo} alt={cats[1].name}>
                   <h3>{cats[1].name}</h3>
                   <h5>Breed: {cats[1].breed}</h5>
                   <h5>Age: {cats[1].age}</h5>
@@ -320,7 +316,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[2].photo} alt={cats[2].name}>
+                <Thumbnail className="grid" src={cats[2].photo} alt={cats[2].name}>
                   <h3>{cats[2].name}</h3>
                   <h5>Breed: {cats[2].breed}</h5>
                   <h5>Age: {cats[2].age}</h5>
@@ -333,7 +329,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
             </Row>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[3].photo} alt={cats[3].name}>
+                <Thumbnail className="grid" src={cats[3].photo} alt={cats[3].name}>
                   <h3>{cats[3].name}</h3>
                   <h5>Breed: {cats[3].breed}</h5>
                   <h5>Age: {cats[3].age}</h5>
@@ -344,7 +340,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[4].photo} alt={cats[4].name}>
+                <Thumbnail className="grid" src={cats[4].photo} alt={cats[4].name}>
                   <h3>{cats[4].name}</h3>
                   <h5>Breed: {cats[4].breed}</h5>
                   <h5>Age: {cats[4].age}</h5>
@@ -355,7 +351,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[5].photo} alt={cats[5].name}>
+                <Thumbnail className="grid" src={cats[5].photo} alt={cats[5].name}>
                   <h3>{cats[5].name}</h3>
                   <h5>Breed: {cats[5].breed}</h5>
                   <h5>Age: {cats[5].age}</h5>
@@ -368,7 +364,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
             </Row>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[6].photo} alt={cats[6].name}>
+                <Thumbnail className="grid" src={cats[6].photo} alt={cats[6].name}>
                   <h3>{cats[6].name}</h3>
                   <h5>Breed: {cats[6].breed}</h5>
                   <h5>Age: {cats[6].age}</h5>
@@ -388,7 +384,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
           <div>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[0].photo} alt={cats[0].name}>
+                <Thumbnail className="grid" src={cats[0].photo} alt={cats[0].name}>
                   <h3>{cats[0].name}</h3>
                   <h5>Breed: {cats[0].breed}</h5>
                   <h5>Age: {cats[0].age}</h5>
@@ -399,7 +395,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[1].photo} alt={cats[1].name}>
+                <Thumbnail className="grid" src={cats[1].photo} alt={cats[1].name}>
                   <h3>{cats[1].name}</h3>
                   <h5>Breed: {cats[1].breed}</h5>
                   <h5>Age: {cats[1].age}</h5>
@@ -410,7 +406,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[2].photo} alt={cats[2].name}>
+                <Thumbnail className="grid" src={cats[2].photo} alt={cats[2].name}>
                   <h3>{cats[2].name}</h3>
                   <h5>Breed: {cats[2].breed}</h5>
                   <h5>Age: {cats[2].age}</h5>
@@ -423,7 +419,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
             </Row>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[3].photo} alt={cats[3].name}>
+                <Thumbnail className="grid" src={cats[3].photo} alt={cats[3].name}>
                   <h3>{cats[3].name}</h3>
                   <h5>Breed: {cats[3].breed}</h5>
                   <h5>Age: {cats[3].age}</h5>
@@ -434,7 +430,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[4].photo} alt={cats[4].name}>
+                <Thumbnail className="grid" src={cats[4].photo} alt={cats[4].name}>
                   <h3>{cats[4].name}</h3>
                   <h5>Breed: {cats[4].breed}</h5>
                   <h5>Age: {cats[4].age}</h5>
@@ -445,7 +441,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[5].photo} alt={cats[5].name}>
+                <Thumbnail className="grid" src={cats[5].photo} alt={cats[5].name}>
                   <h3>{cats[5].name}</h3>
                   <h5>Breed: {cats[5].breed}</h5>
                   <h5>Age: {cats[5].age}</h5>
@@ -458,7 +454,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
             </Row>
             <Row>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[6].photo} alt={cats[6].name}>
+                <Thumbnail className="grid" src={cats[6].photo} alt={cats[6].name}>
                   <h3>{cats[6].name}</h3>
                   <h5>Breed: {cats[6].breed}</h5>
                   <h5>Age: {cats[6].age}</h5>
@@ -469,7 +465,7 @@ const AdoptedcatsGridItem = ({ cats }) => {
                 </Thumbnail>
               </Col>
               <Col xs={6} md={4}>
-                <Thumbnail src={cats[7].photo} alt={cats[7].name}>
+                <Thumbnail className="grid" src={cats[7].photo} alt={cats[7].name}>
                   <h3>{cats[7].name}</h3>
                   <h5>Breed: {cats[7].breed}</h5>
                   <h5>Age: {cats[7].age}</h5>
@@ -485,29 +481,6 @@ const AdoptedcatsGridItem = ({ cats }) => {
       )
     }
   }
-
-  // console.log(renderPet)
-
-  // const formatted = (renderPet) => {
-  //   let counter = 0;
-
-  //   for (let i = 1; i < renderPet.length-1; i ++) {
-  //     if (i === 0) {
-  //       renderPet[i] = 
-  //     }
-  //   }
-  // }
-
-  // function petGrid(cats) {
-  //   let counter = 0;
-  //   while (counter < cats.length) {
-  //     if (counter < 4) {
-  //       return (
-
-  //       )
-  //     }
-  //   }
-  // }
 
  
 export default AdoptedcatsGridItem;
