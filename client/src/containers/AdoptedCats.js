@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import uuid from 'uuid';
-import { connect } from "react-redux";
-// import { Route, Switch, Link } from "react-router-dom";
+
 import AdoptedCatsGridItems from '../components/AdoptedCatsGridItems'
 
 class AdoptedCats extends Component {
@@ -23,7 +21,7 @@ class AdoptedCats extends Component {
             <h1>"You got me!"</h1>
             <h2><small className="text-muted">Now take me home!"</small></h2>
           </div>
-          <div style={{"paddingTop" : "10px"}}>
+          <div style={{"paddingTop" : "15px"}}>
             <AdoptedCatsGridItems cats={this.state.adopted} />
           </div>
         </div>
@@ -38,19 +36,5 @@ class AdoptedCats extends Component {
     }
   }
 }
-
-
-//NOT SURE ANY OF THIS IS NEEDED -> CAN THIS JUST BE A COMPONENT? 
-// const mapStateToProps = state => {
-//   return {
-//     cats: state.cats
-//   };
-// };
-
-// // const mapDispatchToProps = dispatch => {
-// //   return { actions: bindActionCreators(actions, dispatch) };
-// // };
-
-// export default connect(mapStateToProps)(AdoptedCats);
 
 export default AdoptedCats
