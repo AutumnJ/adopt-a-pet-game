@@ -1,27 +1,10 @@
 import fetch from 'isomorphic-fetch';
-import { staticCats } from '../data'
-//remove staticCats
 import StockKitty from '../lib/StockKitty.png'
 
-//After organized, comment back in external API fetch, internal API data persistence and addCat action
+// Test data:
+// import { staticCats } from '../data'
 
-//DON'T NEED THIS CURRENTLY:
-// const getCats = (cats) => {
-//   return {
-//     type: "GET_CATS",
-//     payload: cats
-//   };
-// };
-
-// export const clearState = () => {
-//   return {
-//     type: "CLEAR_STATE",
-//     //need to also fire async action to remove from db
-//     //need to add to dogs
-//   }
-// }
-
-const addCat = (cats) => {
+const addCats = (cats) => {
   return {
     type: "CREATE_CAT",
     payload: cats
@@ -35,6 +18,7 @@ const getCat = (cat) => {
   };
 };
 
+// map external API return prior to Rails API POST
 const mapCats = (cats) => {
   let catList = cats.petfinder.pets.pet
 
@@ -49,10 +33,8 @@ const mapCats = (cats) => {
     catObj.breed = cat.breeds.breed.$t;
     catObj.contact_phone = cat.contact.phone.$t;
     catObj.contact_email = cat.contact.email.$t;
-    catObj.contact_city = cat.contact.city.$t;
-    catObj.contact_state = cat.contact.state.$t;
+    catObj.contact_city = cat.contact.city.$t + ' ' + cat.contact.state.$t;
     catObj.photo = photo;
-    // catObj.user_id = userId;
     catObj.description = cat.description.$t;
 
     return catObj;
@@ -60,8 +42,7 @@ const mapCats = (cats) => {
   return mappedList;
 }
 
-//Fix hard-coded userId
-//move URL into .env
+// Rails API POST
 const createCat = (cat) => {
   return fetch(`http://localhost:3001/cats`, {
     method: "POST",
@@ -76,11 +57,7 @@ const createCat = (cat) => {
 
 }
 
-//Fix hard-coded location
-//Need to assign User_id at some point - in view? in mapping action? and set in state by setting it as action.payload.user_id?
-
-//Comment the below back in to start pulling from external API
-
+// External API fetch
 export const fetchCats = (zip) => {
   return async dispatch => {
     return fetch(`${process.env.REACT_APP_EXTERNAL_API_URL}&location=${zip}&format=json&animal=cat&count=16`)
@@ -96,12 +73,13 @@ export const fetchCats = (zip) => {
         return kitties
       })
       .then(function(kitties) {
-          dispatch(addCat(kitties))
+          dispatch(addCats(kitties))
         })
       .catch(error => window.alert("Not enough kitties - try a different zip code!"));
   };
 };
 
+// Internal API fetch
 export const fetchRandomCat = () => {
   return dispatch => {
     return fetch(`http://localhost:3001/cats/1`)
@@ -111,11 +89,10 @@ export const fetchRandomCat = () => {
   };
 };
 
-//from the below, it looks like I can dispatch all the cats at once, in the above fetch 
-//fire off action to clean current state as well & remove items from DB
-//ONLY USING THIS TO DISPATCH USING MY DATA FILE:
+
+// Dispatch with test data from internal file
 // export const fetchCats = () => {
 //   return dispatch => {
-//       dispatch(addCat())
+//       dispatch(addCats(staticCats))
 //     }
 // };

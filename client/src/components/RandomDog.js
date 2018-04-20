@@ -20,7 +20,7 @@ export const RandomDog = ({ dog }) => {
         <h5>Age: {dog.age}</h5>
         <h5>Sex: {dog.sex}</h5>
         <h5>Size: {dog.size}</h5>
-        <h5>Location: {dog.contact_city} {dog.contact_state}</h5>
+        <h5>Location: {dog.contact_city}</h5>
         <h5>Contact: {dog.contact_email}</h5>
         <p>{dog.description}</p>
       </Thumbnail>

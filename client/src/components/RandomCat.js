@@ -21,7 +21,7 @@ export const RandomCat = ({ cat }) => {
         <h5>Age: {cat.age}</h5>
         <h5>Sex: {cat.sex}</h5>
         <h5>Size: {cat.size}</h5>
-        <h5>Location: {cat.contact_city} {cat.contact_state}</h5>
+        <h5>Location: {cat.contact_city}</h5>
         <h5>Contact: {cat.contact_email}</h5>
         <p>{cat.description}</p>
       </Thumbnail>

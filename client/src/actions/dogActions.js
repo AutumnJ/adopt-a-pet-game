@@ -15,6 +15,7 @@ const getDog = (dog) => {
   };
 };
 
+// map external API return prior to Rails API POST
 const mapDogs = (dogs) => {
   let dogList = dogs.petfinder.pets.pet
 
@@ -29,8 +30,7 @@ const mapDogs = (dogs) => {
     dogObj.breed = dog.breeds.breed.$t;
     dogObj.contact_phone = dog.contact.phone.$t;
     dogObj.contact_email = dog.contact.email.$t;
-    dogObj.contact_city = dog.contact.city.$t;
-    dogObj.contact_state = dog.contact.state.$t;
+    dogObj.contact_city = dog.contact.city.$t + ' ' + dog.contact.state.$t;
     dogObj.photo = photo;
     // dogObj.user_id = userId;
     dogObj.description = dog.description.$t;
@@ -40,6 +40,7 @@ const mapDogs = (dogs) => {
   return mappedList;
 }
 
+// Rails API POST
 const createDog = (dog) => {
   return fetch(`http://localhost:3001/dogs`, {
     method: "POST",
@@ -53,6 +54,7 @@ const createDog = (dog) => {
   .catch(error => console.log(error));
 }
 
+// External API fetch
 export const fetchDogs = (zip) => {
   return async dispatch => {
     return fetch(`${process.env.REACT_APP_EXTERNAL_API_URL}&location=${zip}&format=json&animal=dog&count=16`)
@@ -74,7 +76,7 @@ export const fetchDogs = (zip) => {
   };
 };
 
-
+// Internal API fetch
 export const fetchRandomDog = () => {
   return dispatch => {
     return fetch(`http://localhost:3001/dogs/1`)
