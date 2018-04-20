@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-// import uuid from 'uuid';
 import { connect } from "react-redux";
-// import { Route, Switch, Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
+import { Redirect } from "react-router";
+import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+
 import { fetchCats } from "../actions/catActions";
 import { fetchDogs } from "../actions/dogActions";
-// import CatsPage from "./CatsPage";
-import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { FormErrors } from "../components/FormErrors"
-import { Redirect } from "react-router";
+
 
 class QuestionPage extends Component {
 
@@ -66,22 +65,17 @@ class QuestionPage extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
 
-    //NEED TO CALL DIFFERENT ACTION BASED ON WHICH BOX IS CHECKED.
-    const { cats, actions } = this.props;
+    const { actions } = this.props;
     const { animal, zip } = this.state;
-    console.log("before interval")
-    console.log(this.props)
 
     const oldDoggies = this.props.dogs[0] ? JSON.stringify(this.props.dogs[0]) : "none"
     const oldKitties = this.props.cats[0] ? JSON.stringify(this.props.cats[0]) : "none"
 
-    //check if cats has values already -> if so, dispatch action to erase those from db
-
     if (animal === 'dog') {
 
       actions.fetchDogs(zip)
-      // setTimeout = () => { this.setState({redirect: 'dog'}); }, 5000;
 
+      // setState to trigger redirect once Redux state has updated 
       let interval = setInterval((function(self, oldDoggies){
         return function(){
           if (oldDoggies !== JSON.stringify(self.props.dogs[0]) && self.props.dogs[0]) {
@@ -92,14 +86,10 @@ class QuestionPage extends Component {
         }
       })(this, oldDoggies), 500);
 
-
-      
-
-      // setTimeout = () => { this.props.history.push('/dogs'); }, 5000;
-
     } else {
       actions.fetchCats(zip);
 
+       // setState to trigger redirect once Redux state has updated 
       let interval = setInterval((function(self, oldKitties){
         return function(){
           if (oldKitties !== JSON.stringify(self.props.cats[0]) && self.props.cats[0]) {
@@ -109,19 +99,9 @@ class QuestionPage extends Component {
         }
       })(this, oldKitties), 500);
 
-      // setTimeout = () => { this.setState({redirect: 'cat'}); }, 5000;
-
-      // setTimeout = () => { this.props.history.push('/cats'); }, 5000;    
   }
-    //update state 
-
-    //add cats to DB
-    // actions.addCats(this.state);
-
-    //Add in dog route redirect
-
-    //is reset of state required?
-    // this.props.history.push('/cats')
+    
+    // Redirect removes the need to reset state
     this.setState({
       animal: '',
       zip: '',
@@ -129,15 +109,12 @@ class QuestionPage extends Component {
       zipValid: false,
       animalValid: true,
       formValid: false,
-
+      redirect: '',
     });
   }
 
-  //prevent submit unless valid zip?
   render(){
     const { zip, animal, redirect } = this.state;
-    console.log('redirect')
-    console.log(redirect)
 
     if (redirect === 'dog' || redirect === 'cat') {
       return (
