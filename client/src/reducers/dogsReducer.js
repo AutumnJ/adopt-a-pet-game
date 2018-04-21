@@ -1,4 +1,4 @@
-export default function dogsReducer(state = {dogs:[], randomDog: []}, action) {
+export default function dogsReducer(state = {dogs:[], randomDog: [], adoptedDogs: []}, action) {
   switch (action.type) {
     case 'CREATE_DOG':
       return Object.assign ({}, { ...state, dogs: action.payload })
