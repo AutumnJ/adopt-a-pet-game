@@ -24,8 +24,6 @@ class DogsGrid extends Component {
       dogs.forEach(dog => {
         newArray.push(Object.assign({}, dog))
       })
-      console.log("NEW ARRAY")
-      console.log(newArray)
       return newArray;
     }
 

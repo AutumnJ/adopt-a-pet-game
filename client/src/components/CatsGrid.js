@@ -24,8 +24,6 @@ class CatsGrid extends Component {
       cats.forEach(cat => {
         newArray.push(Object.assign({}, cat))
       })
-      console.log("NEW ARRAY")
-      console.log(newArray)
       return newArray;
     }
 
@@ -40,8 +38,7 @@ class CatsGrid extends Component {
       event.preventDefault();
       const { id } = event.target;
       const { cats, adoptedCats } = this.state
-      console.log("in event")
-      console.log(cats)
+
 
       const kitty = cats.find( cat => cat.id === parseInt(id, 10) );
       if (kitty.photo !== "/static/media/IMG_5695.7d23606d.jpg" && kitty.photo !== "/static/media/Adopted.e366e9ec.png") {
