@@ -102,15 +102,15 @@ class QuestionPage extends Component {
   }
     
     // Redirect removes the need to reset state
-    this.setState({
-      animal: '',
-      zip: '',
-      formErrors: {zip: '', animal: ''},
-      zipValid: false,
-      animalValid: true,
-      formValid: false,
-      redirect: '',
-    });
+    // this.setState({
+    //   animal: '',
+    //   zip: '',
+    //   formErrors: {zip: '', animal: ''},
+    //   zipValid: false,
+    //   animalValid: true,
+    //   formValid: false,
+    //   redirect: '',
+    // });
   }
 
   render(){
