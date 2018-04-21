@@ -78,7 +78,7 @@
   display: flex;
 }
 
-.random-pet-btn {
+.random-pet-btn, .play-again-btn {
   background-color: #405681;
 }
 
@@ -91,12 +91,12 @@
   box-shadow: none;
 }
 
-
-/*.grid {
+/* comment below out to have thumbnail border on grid page */
+.grid {
   border: none;
 }
 
-.row {
+/*.row {
   border: 1px solid #ddd;
 }
 
