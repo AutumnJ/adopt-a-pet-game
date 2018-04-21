@@ -82,7 +82,7 @@ export const fetchCats = (zip) => {
 // Internal API fetch
 export const fetchRandomCat = () => {
   return dispatch => {
-    return fetch(`http://localhost:3001/cats/1`)
+    return fetch(`http://localhost:3001/cats/random`)
       .then(response => response.json())
       .then(cat => dispatch(getCat(cat)))
       .catch(error => console.log(error));
