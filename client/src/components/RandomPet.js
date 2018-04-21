@@ -21,7 +21,7 @@ export const RandomPet = ({ pet, type }) => {
         <h5>Age: {pet.age}</h5>
         <h5>Sex: {pet.sex}</h5>
         <h5>Size: {pet.size}</h5>
-        <h5>Lopetion: {pet.contact_city}</h5>
+        <h5>Location: {pet.contact_city}</h5>
         <h5>Contact: {pet.contact_email}</h5>
         <p>{pet.description}</p>
       </Thumbnail>
