@@ -14,7 +14,7 @@ class DogsController < ApplicationController
     render json: @dog
   end
 
-  def show
+  def random
     @dog = Dog.random
 
     render json: @dog

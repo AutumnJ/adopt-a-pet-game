@@ -16,7 +16,7 @@ class CatsController < ApplicationController
       end
   end
 
-  def show
+  def random
     @cat = Cat.random
 
     render json: @cat
