@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import DogsGrid from './DogsGrid'
+import DogsGrid from '../components/DogsGrid'
 import { PetErrorPage } from '../components/PetErrorPage'
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import CatsGrid from './CatsGrid'
+import CatsGrid from '../components/CatsGrid'
 import { PetErrorPage } from '../components/PetErrorPage'
 
 class CatsPage extends Component {
