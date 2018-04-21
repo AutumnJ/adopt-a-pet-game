@@ -1,10 +1,11 @@
 class DogsController < ApplicationController
 
-  def index
-    @dogs = Dog.find_by(user_id: params[:user_id])
+  # Not currently using:
+  # def index
+  #   @dogs = Dog.find_by(user_id: params[:user_id])
 
-    render json: @dogs
-  end
+  #   render json: @dogs
+  # end
 
   def create
     @dog = Dog.new(dog_params)
@@ -19,12 +20,11 @@ class DogsController < ApplicationController
     render json: @dog
   end
 
-  def destroy
-    @dog = Dog.find(params[:id])
-    @dog.destroy
-
-    #add else statement -> look at notes
-  end 
+  # Not currently using:
+  # def destroy
+  #   @dog = Dog.find(params[:id])
+  #   @dog.destroy
+  # end 
 
   private
     def dog_params

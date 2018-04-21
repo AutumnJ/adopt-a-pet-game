@@ -1,13 +1,11 @@
 class CatsController < ApplicationController
 
-  def index
-    # @cats = Cat.find_by(user_id: params[:user_id])
-    #Or should this just return the current user's cats?
+  # Not currently using:
+  # def index
+  #   @cats = Cat.all
 
-    @cats = Cat.all
-
-    render json: @cats
-  end
+  #   render json: @cats
+  # end
 
   def create
     cat = Cat.new(cat_params)
@@ -24,13 +22,11 @@ class CatsController < ApplicationController
     render json: @cat
   end
 
-  def destroy
-    @cat = Cat.find(params[:id])
-    @cat.destroy
-
-    #add else statement -> look at notes
-
-  end 
+  # Not currently using:
+  # def destroy
+  #   @cat = Cat.find(params[:id])
+  #   @cat.destroy
+  # end 
 
    private
     def cat_params
