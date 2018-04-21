@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import CatsGrid from '../components/CatsGrid'
+import CatsGrid from './CatsGrid'
 import { PetErrorPage } from '../components/PetErrorPage'
 
 class CatsPage extends Component {
@@ -20,7 +20,7 @@ class CatsPage extends Component {
             <h1> /\___/\  KITTIES!  /\___/\</h1>
             <h2><small className="text-muted">Grab them before they disappear!</small></h2>
           </div>
-          <CatsGrid cats={this.props.cats} />
+          <CatsGrid />
         </div>
       );
     }
