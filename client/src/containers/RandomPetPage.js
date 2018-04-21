@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import { bindActionCreators } from "redux";
+
 import { fetchRandomCat } from "../actions/catActions";
 import { fetchRandomDog } from "../actions/dogActions";
 import { Grid, Row, Col } from 'react-bootstrap';
-import { RandomCat } from '../components/RandomCat'
-import { RandomDog } from '../components/RandomDog'
+import { RandomPet } from '../components/RandomPet'
 
 class RandomPetPage extends Component {
 
@@ -48,10 +48,10 @@ class RandomPetPage extends Component {
           <Grid>
             <Row id="random">
               <Col xs={6}>
-                <RandomDog dog={dog} />
+                <RandomPet pet={dog} type={dog} />
               </Col>
               <Col xs={6}>
-                <RandomCat cat={cat} />
+                <RandomPet pet={cat} type={cat}/>
               </Col>
             </Row>
           </Grid>
