@@ -43,10 +43,6 @@
   text-align: left;
 }
 
-.thumbnail p {
-
-}
-
 .navbar-default .navbar-brand, .navbar a {
   color: #4056A1;
   text-decoration: none;
@@ -95,7 +91,8 @@
   box-shadow: none;
 }
 
-.grid {
+
+/*.grid {
   border: none;
 }
 
@@ -106,10 +103,18 @@
 .col-md-4 {
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
+}*/
+
+/*#random {
+  border: none;
+}*/
+
+.thumbnail {
+  border-color: #C5CBE3;
 }
 
-#random {
-  border: none;
+.thumbnail img {
+  padding-top: 5px;
 }
 
 
