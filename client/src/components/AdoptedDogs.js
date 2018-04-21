@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import AdoptedPetsGridItems from './AdoptedPetsGridItems'
+import AdoptedPetGridItems from './AdoptedPetGridItems'
 
 class AdoptedDogs extends Component {
 
@@ -22,7 +22,7 @@ class AdoptedDogs extends Component {
             <h2><small className="text-muted">"Now take me home!"</small></h2>
           </div>
           <div style={{"paddingTop" : "15px"}}>
-            <AdoptedPetsGridItems pets={this.state.adopted} />
+            <AdoptedPetGridItems pets={this.state.adopted} />
           </div>
         </div>
       );
