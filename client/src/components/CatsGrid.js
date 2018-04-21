@@ -1,31 +1,34 @@
 import React, { Component } from "react";
-import { Table } from 'react-bootstrap';
+import { connect } from "react-redux";
+import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 
 import PetGridItem from './PetGridItem'
 import IMG_5695 from '../lib/IMG_5695.jpg'
 import Adopted from '../lib/Adopted.png'
 import AdoptedCats from './AdoptedCats'
 import { PetErrorPage } from './PetErrorPage'
+import { adoptCat, clearGame, playGame } from '../actions/catActions'
 
 class CatsGrid extends Component {
 
-    constructor(props) {
-      super(props);
+    // constructor(props) {
+    //   super(props);
 
-      this.state = {
-        cats: this.mapCats(this.props.cats),
-        adoptedCats: []
-      }
-    }
+    //   this.state = {
+    //     cats: (this.props.catGame[0] ? this.props.catGame : this.mapCats(this.props.cats))
+    //     // adoptedCats: []
+    //   }
+    // }
     
-    mapCats(cats) {
-      let newArray = []
+    // // if we don't want to push changes up to state
+    // mapCats(cats) {
+    //   let newArray = []
 
-      cats.forEach(cat => {
-        newArray.push(Object.assign({}, cat))
-      })
-      return newArray;
-    }
+    //   cats.forEach(cat => {
+    //     newArray.push(Object.assign({}, cat))
+    //   })
+    //   return newArray;
+    // }
 
     // componentWillUnmount() {
     //   this.setState({
@@ -34,22 +37,34 @@ class CatsGrid extends Component {
     //   })
     // }
 
+    //action.adoptCat(cat)
+
+    handleOnPlayAgain = event => {
+      event.preventDefault(); 
+
+      this.props.clearGame();
+      this.props.playGame();
+    }
+
     handleOnClick = (event) => {
       event.preventDefault();
       const { id } = event.target;
-      const { cats, adoptedCats } = this.state
+      // const { cats, adoptedCats } = this.state
+      const cats = this.props.catGame
 
 
       const kitty = cats.find( cat => cat.id === parseInt(id, 10) );
       if (kitty.photo !== "/static/media/IMG_5695.7d23606d.jpg" && kitty.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedKitty = Object.assign({}, kitty);
-        adoptedCats.push(adoptedKitty);
+        // adoptedCats.push(adoptedKitty);
+        this.props.adoptCat(adoptedKitty);
         kitty.photo = Adopted;
+        // this.props.playGame(kitty);
 
-        this.setState({
-          cats: cats,
-          adoptedCats: adoptedCats
-        })
+        // this.setState({
+        //   cats: cats,
+        //   adoptedCats: adoptedCats
+        // })
 
         this.disappearCat(cats);
 
@@ -64,6 +79,7 @@ class CatsGrid extends Component {
       if (cats[replacement].photo !== "/static/media/IMG_5695.7d23606d.jpg" && cats[replacement].photo !== "/static/media/Adopted.e366e9ec.png") {
         let goneKitty = cats[replacement];
         goneKitty.photo = IMG_5695;
+        // this.props.playGame(goneKitty);
 
         this.setState({
           cats: cats,
@@ -80,13 +96,19 @@ class CatsGrid extends Component {
     }
 
     render(){
-    const { cats } = this.state;
+    const cats = this.props.catGame
 
-    if (this.state.cats.length === 0) {
-      return(<PetErrorPage pet={"dog"}/>)
+    if (cats.length === 0) {
+      return(<PetErrorPage pet={"cat"}/>)
     } else {
+      // console.log(this.state.cats)
       return (
         <div style={{"paddingTop" : "15px"}} >
+            <ButtonToolbar>
+              <Button className="random-pet-btn" bsStyle="primary" bsSize="large" onClick={this.handleOnPlayAgain}>
+                Play Again
+              </Button>
+            </ButtonToolbar>
            <Table bordered condensed>
             <tbody id="table-container">
               <tr>
@@ -115,11 +137,18 @@ class CatsGrid extends Component {
               </tr>
             </tbody>
           </Table>
-          <AdoptedCats adopted={this.state.adoptedCats}/>
+          <AdoptedCats adopted={this.props.adoptedCats}/>
         </div>
       );
     }
   }
 }
 
-export default CatsGrid;
+const mapStateToProps = state => {
+  return {
+    adoptedCats: state.cats.adoptedCats,
+    catGame: state.cats.catGame
+  };
+};
+
+export default connect(mapStateToProps, { adoptCat, clearGame, playGame })(CatsGrid);
