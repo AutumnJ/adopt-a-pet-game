@@ -15,6 +15,25 @@ const getDog = (dog) => {
   };
 };
 
+export const adoptDog = (dog) => {
+  return {
+    type: 'ADOPT_DOG',
+    payload: dog
+  };
+}
+
+export const playGame = () => {
+  return {
+    type: 'PLAY_GAME',
+  };
+}
+
+export const clearGame = () => {
+  return {
+    type: 'CLEAR_GAME'
+  }
+}
+
 // map external API return prior to Rails API POST
 const mapDogs = (dogs) => {
   let dogList = dogs.petfinder.pets.pet
@@ -72,6 +91,12 @@ export const fetchDogs = (zip) => {
       .then(function(doggies) {
           dispatch(addDog(doggies))
         })
+      .then(function() {
+        dispatch(clearGame())
+      })
+      .then(function() {
+        dispatch(playGame())
+      })
       .catch(error => window.alert("Not enough puppers - try a different zip code!"));
   };
 };
