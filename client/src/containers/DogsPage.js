@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import DogsGrid from '../components/DogsGrid'
+import DogsGrid from './DogsGrid'
 import { PetErrorPage } from '../components/PetErrorPage'
-
 
 class DogsPage extends Component {
 
@@ -21,7 +20,7 @@ class DogsPage extends Component {
             <h1> DOGGIES! </h1>
             <h2><small className="text-muted">Grab them before they disappear!</small></h2>
           </div>
-          <DogsGrid dogs={this.props.dogs} />
+          <DogsGrid />
         </div>
       );
     }
