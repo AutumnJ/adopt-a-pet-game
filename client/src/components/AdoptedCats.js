@@ -4,17 +4,17 @@ import AdoptedPetGridItems from './AdoptedPetGridItems'
 
 class AdoptedCats extends Component {
 
-  constructor(props) {
-    super(props);
+  // constructor() {
+  //   super()
 
-    this.state = {
-      adopted: this.props.adopted
-    }
-  }
+  // //   this.state = {
+  // //     adopted: this.props.adopted
+  // //   }
+  // }
 
   render(){
 
-    if (this.state.adopted[0]) {
+    if (this.props.adopted[0]) {
       return (
         <div>
           <div className="cats-header">
@@ -22,7 +22,7 @@ class AdoptedCats extends Component {
             <h2><small className="text-muted">"Now take me home!"</small></h2>
           </div>
           <div style={{"paddingTop" : "15px"}}>
-            <AdoptedPetGridItems pets={this.state.adopted} />
+            <AdoptedPetGridItems pets={this.props.adopted} />
           </div>
         </div>
       );
