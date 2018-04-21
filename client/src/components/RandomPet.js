@@ -15,7 +15,7 @@ export const RandomPet = ({ pet, type }) => {
      const photo = ( pet.photo === null ? ( type === "cat" ? StockKitty : StockPuppy) : pet.photo )
     
     return (
-      <Thumbnail src={photo} alt={pet.name}>
+      <Thumbnail src={photo} alt={pet.name} style={{"paddingTop" : "5px"}}>
         <h3>{pet.name}</h3>
         <h5>Breed: {pet.breed}</h5>
         <h5>Age: {pet.age}</h5>
