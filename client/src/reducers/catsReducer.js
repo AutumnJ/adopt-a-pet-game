@@ -8,9 +8,9 @@ export default function catsReducer(state = {cats:[], randomCat:[], adoptedCats:
       return Object.assign ({}, { ...state, randomCat: action.payload })
     case 'ADOPT_CAT':
       return {...state, adoptedCats: state.adoptedCats.concat(action.payload)} 
-    case 'CLEAR_GAME':
+    case 'CLEAR_CAT_GAME':
       return Object.assign({}, {...state, adoptedCats: [], catGame: []})
-    case 'PLAY_GAME':
+    case 'PLAY_CAT_GAME':
       let newArray = []
 
       state.cats.forEach(cat => {

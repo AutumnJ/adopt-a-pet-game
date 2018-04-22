@@ -6,9 +6,9 @@ export default function dogsReducer(state = {dogs:[], randomDog: [], adoptedDogs
       return Object.assign ({}, { ...state, randomDog: action.payload })
     case 'ADOPT_DOG':
       return {...state, adoptedDogs: state.adoptedDogs.concat(action.payload)} 
-    case 'CLEAR_GAME':
+    case 'CLEAR_DOG_GAME':
       return Object.assign({}, {...state, adoptedDogs: [], dogGame: []})
-    case 'PLAY_GAME':
+    case 'PLAY_DOG_GAME':
       let newArray = []
 
       state.dogs.forEach(dog => {
