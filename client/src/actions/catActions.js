@@ -27,13 +27,13 @@ export const adoptCat = (cat) => {
 
 export const playGame = () => {
   return {
-    type: 'PLAY_GAME',
+    type: 'PLAY_CAT_GAME',
   };
 }
 
 export const clearGame = () => {
   return {
-    type: 'CLEAR_GAME'
+    type: 'CLEAR_CAT_GAME'
   }
 }
 

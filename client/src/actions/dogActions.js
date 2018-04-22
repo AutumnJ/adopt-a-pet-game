@@ -24,13 +24,13 @@ export const adoptDog = (dog) => {
 
 export const playGame = () => {
   return {
-    type: 'PLAY_GAME',
+    type: 'PLAY_DOG_GAME',
   };
 }
 
 export const clearGame = () => {
   return {
-    type: 'CLEAR_GAME'
+    type: 'CLEAR_DOG_GAME'
   }
 }
 
