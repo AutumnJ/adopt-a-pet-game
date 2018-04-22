@@ -6,6 +6,8 @@ Gamified adoptable pet search interface with React/Redux frontend and Rails API 
 
 ![Adopt-a-Pet Walkthrough](./public/walkthrough.gif)
 
+See full walkthrough video [here](https://youtu.be/rumehkzhJaY).
+
 ## Usage
 
 * To use this app, fork and clone this repo.
