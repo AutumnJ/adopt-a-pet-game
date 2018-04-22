@@ -6,7 +6,7 @@ import PetGridItem from '../components/PetGridItem'
 import IMG_5695 from '../lib/IMG_5695.jpg'
 import Adopted from '../lib/Adopted.png'
 import AdoptedCats from '../components/AdoptedCats'
-import { adoptCat, clearGame, playGame } from '../actions/catActions'
+import { adoptCat, clearGame, playGame, updatePhoto } from '../actions/catActions'
 
 class CatsGrid extends Component {
 
@@ -27,7 +27,8 @@ class CatsGrid extends Component {
       if (kitty.photo !== "/static/media/IMG_5695.7d23606d.jpg" && kitty.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedKitty = Object.assign({}, kitty);
         this.props.adoptCat(adoptedKitty);
-        kitty.photo = Adopted;
+        // kitty.photo = Adopted;
+        this.props.updatePhoto(kitty, Adopted)
 
         this.disappearCat(cats);
 
@@ -41,7 +42,8 @@ class CatsGrid extends Component {
 
       if (cats[replacement].photo !== "/static/media/IMG_5695.7d23606d.jpg" && cats[replacement].photo !== "/static/media/Adopted.e366e9ec.png") {
         let goneKitty = cats[replacement];
-        goneKitty.photo = IMG_5695;
+        // goneKitty.photo = IMG_5695;
+        this.props.updatePhoto(goneKitty, IMG_5695)
 
       } else if (cats.find( cat => cat.photo !== "/static/media/IMG_5695.7d23606d.jpg" && cat.photo !== "/static/media/Adopted.e366e9ec.png")) {
         this.disappearCat(cats);
@@ -106,4 +108,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { adoptCat, clearGame, playGame })(CatsGrid);
+export default connect(mapStateToProps, { adoptCat, clearGame, playGame, updatePhoto })(CatsGrid);
