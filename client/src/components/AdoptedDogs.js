@@ -4,14 +4,6 @@ import AdoptedPetGridItems from './AdoptedPetGridItems'
 
 class AdoptedDogs extends Component {
 
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     adopted: this.props.adopted
-  //   }
-  // }
-
   render(){
 
     if (this.props.adopted[0]) {
