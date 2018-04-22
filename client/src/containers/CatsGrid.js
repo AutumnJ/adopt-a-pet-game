@@ -20,7 +20,6 @@ class CatsGrid extends Component {
     handleOnClick = (event) => {
       event.preventDefault();
       const { id } = event.target;
-      // const { cats, adoptedCats } = this.state
       const cats = this.props.catGame
 
 
