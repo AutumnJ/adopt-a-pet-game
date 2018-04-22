@@ -37,6 +37,14 @@ export const clearGame = () => {
   }
 }
 
+export const updatePhoto = (cat, photo) => {
+  return {
+    type: 'UPDATE_CAT_PHOTO',
+    payload: cat,
+    update: photo
+  };
+}
+
 // map external API return prior to Rails API POST
 const mapCats = (cats) => {
   let catList = cats.petfinder.pets.pet
