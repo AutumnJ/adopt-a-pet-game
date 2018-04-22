@@ -10,32 +10,6 @@ import { adoptDog, clearGame, playGame } from '../actions/dogActions'
 
 class DogsGrid extends Component {
 
-    // constructor(props) {
-    //   super(props);
-
-    //   this.state = {
-    //     dogs: this.mapDogs(this.props.dogs),
-    //     adoptedDogs: []
-    //   }
-    // }
-
-    // mapDogs(dogs) {
-    //   let newArray = []
-
-    //   dogs.forEach(dog => {
-    //     newArray.push(Object.assign({}, dog))
-    //   })
-    //   return newArray;
-    // }
-
-    // componentWillUnmount() {
-    //   this.setState({
-    //     dogs: [],
-    //     adoptedDogs: [],
-    //   })
-    // }
-
-
     handleOnPlayAgain = event => {
       event.preventDefault(); 
 
@@ -46,20 +20,13 @@ class DogsGrid extends Component {
     handleOnClick = (event) => {
       event.preventDefault();
       const { id } = event.target;
-      // const { dogs, adoptedDogs } = this.state
       const dogs = this.props.dogGame
 
       const doggo = dogs.find( dog => dog.id === parseInt(id, 10) );
       if (doggo.photo !== "/static/media/LittlePup.df8ef6dd.jpg" && doggo.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedDog = Object.assign({}, doggo);
-        // adoptedDogs.push(adoptedDog);
         this.props.adoptDog(adoptedDog);
         doggo.photo = Adopted;
-
-        // this.setState({
-        //   dogs: dogs,
-        //   adoptedDogs: adoptedDogs
-        // })
 
         this.disappearDog(dogs);
 
@@ -75,9 +42,6 @@ class DogsGrid extends Component {
         let goneDog = dogs[replacement];
         goneDog.photo = LittlePup;
 
-        // this.setState({
-        //   dogs: dogs,
-        // })
       } else if (dogs.find( dog => dog.photo !== "/static/media/LittlePup.df8ef6dd.jpg" && dog.photo !== "/static/media/Adopted.e366e9ec.png")) {
         this.disappearDog(dogs);
       } else {
@@ -92,9 +56,6 @@ class DogsGrid extends Component {
     render(){
     const dogs = this.props.dogGame;
 
-    // if (this.state.dogs.length === 0) {
-    //   return(<PetErrorPage pet={"dog"}/>)
-    // } else {
       return (
         <div>
             <ButtonToolbar style={{ "float": "right", "paddingBottom" : "15px", "paddingRight" : "15px" }}>

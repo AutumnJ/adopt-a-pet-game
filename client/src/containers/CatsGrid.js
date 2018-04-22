@@ -10,34 +10,6 @@ import { adoptCat, clearGame, playGame } from '../actions/catActions'
 
 class CatsGrid extends Component {
 
-    // constructor(props) {
-    //   super(props);
-
-    //   this.state = {
-    //     cats: (this.props.catGame[0] ? this.props.catGame : this.mapCats(this.props.cats))
-    //     // adoptedCats: []
-    //   }
-    // }
-    
-    // // if we don't want to push changes up to state
-    // mapCats(cats) {
-    //   let newArray = []
-
-    //   cats.forEach(cat => {
-    //     newArray.push(Object.assign({}, cat))
-    //   })
-    //   return newArray;
-    // }
-
-    // componentWillUnmount() {
-    //   this.setState({
-    //     cats: [],
-    //     adoptedCats: [],
-    //   })
-    // }
-
-    //action.adoptCat(cat)
-
     handleOnPlayAgain = event => {
       event.preventDefault(); 
 
@@ -55,15 +27,8 @@ class CatsGrid extends Component {
       const kitty = cats.find( cat => cat.id === parseInt(id, 10) );
       if (kitty.photo !== "/static/media/IMG_5695.7d23606d.jpg" && kitty.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedKitty = Object.assign({}, kitty);
-        // adoptedCats.push(adoptedKitty);
         this.props.adoptCat(adoptedKitty);
         kitty.photo = Adopted;
-        // this.props.playGame(kitty);
-
-        // this.setState({
-        //   cats: cats,
-        //   adoptedCats: adoptedCats
-        // })
 
         this.disappearCat(cats);
 
@@ -78,11 +43,7 @@ class CatsGrid extends Component {
       if (cats[replacement].photo !== "/static/media/IMG_5695.7d23606d.jpg" && cats[replacement].photo !== "/static/media/Adopted.e366e9ec.png") {
         let goneKitty = cats[replacement];
         goneKitty.photo = IMG_5695;
-        // this.props.playGame(goneKitty);
 
-        // this.setState({
-        //   cats: cats,
-        // })
       } else if (cats.find( cat => cat.photo !== "/static/media/IMG_5695.7d23606d.jpg" && cat.photo !== "/static/media/Adopted.e366e9ec.png")) {
         this.disappearCat(cats);
       } else {
@@ -97,10 +58,6 @@ class CatsGrid extends Component {
     render(){
     const cats = this.props.catGame
 
-    // if (cats.length === 0) {
-    //   return(<PetErrorPage pet={"cat"}/>)
-    // } else {
-      // console.log(this.state.cats)
       return (
         <div>
             <ButtonToolbar style={{ "float": "right", "paddingBottom" : "15px", "paddingRight" : "15px" }}>
