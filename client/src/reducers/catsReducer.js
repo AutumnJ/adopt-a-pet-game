@@ -17,6 +17,14 @@ export default function catsReducer(state = {cats:[], randomCat:[], adoptedCats:
         newArray.push(Object.assign({}, cat))
       })
       return Object.assign ({}, { ...state, catGame: newArray})
+
+    case 'UPDATE_CAT_PHOTO':
+      const cat = Object.assign({}, action.payload)
+      //or could do action.payload.photo = action.update and return state
+      cat.photo = action.update;
+      const index = state.catGame.findIndex(c => c.id === cat.id);
+
+      return {...state, catGame: [...state.catGame.slice(0, index), cat, ...state.catGame.slice(index + 1)]}
     default:
       return state;
   }

@@ -15,6 +15,13 @@ export default function dogsReducer(state = {dogs:[], randomDog: [], adoptedDogs
         newArray.push(Object.assign({}, dog))
       })
       return Object.assign ({}, { ...state, dogGame: newArray})
+    case 'UPDATE_DOG_PHOTO':
+      const dog = Object.assign({}, action.payload)
+      //or could do action.payload.photo = action.update and return state
+      dog.photo = action.update;
+      const index = state.dogGame.findIndex(d => d.id === dog.id);
+
+      return {...state, dogGame: [...state.dogGame.slice(0, index), dog, ...state.dogGame.slice(index + 1)]}
     default:
       return state;
   }
