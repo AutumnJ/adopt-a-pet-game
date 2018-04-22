@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import { Redirect } from "react-router";
 import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
@@ -65,7 +64,6 @@ class QuestionPage extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
 
-    const { actions } = this.props;
     const { animal, zip } = this.state;
 
     const oldDoggies = this.props.dogs[0] ? JSON.stringify(this.props.dogs[0]) : "none"
@@ -73,7 +71,7 @@ class QuestionPage extends Component {
 
     if (animal === 'dog') {
 
-      actions.fetchDogs(zip)
+      this.props.fetchDogs(zip)
 
       // setState to trigger redirect once Redux state has updated 
       let interval = setInterval((function(self, oldDoggies){
@@ -87,7 +85,7 @@ class QuestionPage extends Component {
       })(this, oldDoggies), 500);
 
     } else {
-      actions.fetchCats(zip);
+      this.props.fetchCats(zip);
 
        // setState to trigger redirect once Redux state has updated 
       let interval = setInterval((function(self, oldKitties){
@@ -150,8 +148,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return { actions: bindActionCreators( { fetchCats, fetchDogs } , dispatch) };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionPage);
+export default connect(mapStateToProps, {fetchCats, fetchDogs})(QuestionPage);
