@@ -4,7 +4,7 @@ Gamified adoptable pet search interface with React/Redux frontend and Rails API 
 
 ## Walkthrough
 
-![Adopt-a-Pet Walkthrough](./public/adopt-a-pet-GIF.mp4)
+![Adopt-a-Pet Walkthrough](./public/walkthrough.gif)
 
 * To use this app, fork and clone this repo.
 * From the root directory, run bundle install and start the rails server on port 3001 (bundle exec rails s -p 3001)
