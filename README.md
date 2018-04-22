@@ -6,6 +6,8 @@ Gamified adoptable pet search interface with React/Redux frontend and Rails API 
 
 ![Adopt-a-Pet Walkthrough](./public/walkthrough.gif)
 
+## Usage
+
 * To use this app, fork and clone this repo.
 * From the root directory, run bundle install and start the rails server on port 3001 (bundle exec rails s -p 3001)
 * The react components live in the client folder - cd into the client folder, and start the server on port 3000 (npm install && npm start)
