@@ -18,6 +18,7 @@ export default function dogsReducer(state = {dogs:[], randomDog: [], adoptedDogs
     case 'UPDATE_DOG_PHOTO':
       const dog = Object.assign({}, action.payload)
       //or could do action.payload.photo = action.update and return state
+      //but that incorrectly modifies the existing object 
       dog.photo = action.update;
       const index = state.dogGame.findIndex(d => d.id === dog.id);
 

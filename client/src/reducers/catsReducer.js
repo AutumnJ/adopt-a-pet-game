@@ -21,6 +21,7 @@ export default function catsReducer(state = {cats:[], randomCat:[], adoptedCats:
     case 'UPDATE_CAT_PHOTO':
       const cat = Object.assign({}, action.payload)
       //or could do action.payload.photo = action.update and return state
+      //but that incorrectly modifies the existing object 
       cat.photo = action.update;
       const index = state.catGame.findIndex(c => c.id === cat.id);
 
