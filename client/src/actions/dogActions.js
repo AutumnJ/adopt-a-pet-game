@@ -84,7 +84,7 @@ const createDog = (dog) => {
 
 // External API fetch
 export const fetchDogs = (zip) => {
-  return async dispatch => {
+  return dispatch => {
     return fetch(`${process.env.REACT_APP_EXTERNAL_API_URL}&location=${zip}&format=json&animal=dog&count=16`)
       .then(response => response.json())
       .then(function(dogs) {
