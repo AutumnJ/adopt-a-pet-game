@@ -1,31 +1,28 @@
-import React, { Component } from "react";
+import React from 'react';
 
 import AdoptedPetGridItems from './AdoptedPetGridItems'
 
-class AdoptedPets extends Component {
+const AdoptedPets = ({ adopted }) =>  {
 
-  render(){
-
-    if (this.props.adopted[0]) {
-      return (
-        <div>
-          <div className="cats-header">
-            <h1>"You got me!"</h1>
-            <h2><small className="text-muted">"Now take me home!"</small></h2>
-          </div>
-          <div style={{"paddingTop" : "15px"}}>
-            <AdoptedPetGridItems pets={this.props.adopted} />
-          </div>
-        </div>
-      );
-    } else {
-      return (
+  if (adopted[0]) {
+    return (
+      <div>
         <div className="cats-header">
           <h1>"You got me!"</h1>
           <h2><small className="text-muted">"Now take me home!"</small></h2>
         </div>
-      )
-    }
+        <div style={{"paddingTop" : "15px"}}>
+          <AdoptedPetGridItems pets={adopted} />
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="cats-header">
+        <h1>"You got me!"</h1>
+        <h2><small className="text-muted">"Now take me home!"</small></h2>
+      </div>
+    )
   }
 }
 
