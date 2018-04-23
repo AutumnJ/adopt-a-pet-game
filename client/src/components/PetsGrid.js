@@ -25,33 +25,32 @@ class PetsGrid extends Component {
 
       let interval = setInterval((function(self, animal){
         return function(){
-          console.log(animal)
-          console.log(self.props.gamePets.find( pet => pet.id === parseInt(id, 10)))
           if (animal !== JSON.stringify(self.props.gamePets.find( pet => pet.id === parseInt(id, 10) ))) {
 
             clearInterval(interval);
-            self.disappearPet(pets);
+            self.disappearPet();
           }
         }
       })(this, animal), 200);
 
     } else {
-      this.disappearPet(pets);
+      this.disappearPet();
     }
   }
 
-  disappearPet = (pets) => {
+  disappearPet = () => {
     let replacement = this.replacementInd();
+    const pets = this.props.gamePets;
 
     if (pets[replacement].photo !== this.props.takenImgStatic && pets[replacement].photo !== this.props.adoptedImgStatic) {
       if (this.props.adopted.find( pet => pet.id === replacement.id )) {
-        this.disappearPet(pets);
+        this.disappearPet();
       } else {
         let gonePet = pets[replacement];
         this.props.updatePhoto(gonePet, this.props.takenImg)
       }
     } else if (pets.find( pet => pet.photo !== this.props.takenImgStatic && pet.photo !== this.props.adoptedImgStatic)) {
-      this.disappearPet(pets);
+      this.disappearPet();
     } else {
       return;
     }
