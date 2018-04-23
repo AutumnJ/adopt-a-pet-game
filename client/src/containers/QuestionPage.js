@@ -20,21 +20,9 @@ class QuestionPage extends Component {
       zipValid: false,
       animalValid: true,
       formValid: false,
-      redirect: '',
+      redirect: ''
     }
   }
-
-  // componentWillMount() {
-  //   this.setState = {
-  //     animal: '',
-  //     zip: '',
-  //     formErrors: {zip: '', animal: ''},
-  //     zipValid: false,
-  //     animalValid: true,
-  //     formValid: false,
-  //     redirect: '',
-  //   }
-  // }
 
   handleOnChange = event => {
     const { name, value } = event.target;
@@ -69,10 +57,6 @@ class QuestionPage extends Component {
     this.setState({formValid: this.state.zipValid && this.state.animalValid});
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return (this.props !== nextProps || this.state !== nextState);
-  // }
-
   handleOnSubmit = event => {
     event.preventDefault();
 
@@ -90,8 +74,8 @@ class QuestionPage extends Component {
         return function(){
           if (oldDoggies !== JSON.stringify(self.props.dogs[0]) && self.props.dogs[0]) {
 
-            clearInterval(interval);
             self.setState({redirect: 'dog'});
+            clearInterval(interval);
           }
         }
       })(this, oldDoggies), 500);
@@ -103,8 +87,9 @@ class QuestionPage extends Component {
       let interval = setInterval((function(self, oldKitties){
         return function(){
           if (oldKitties !== JSON.stringify(self.props.cats[0]) && self.props.cats[0]) {
-            clearInterval(interval);
+            
             self.setState({redirect: 'cat'});
+            clearInterval(interval);
           }
         }
       })(this, oldKitties), 500);
@@ -112,15 +97,7 @@ class QuestionPage extends Component {
   }
 
   // componentWillUnmount() {
-  //   this.setState = {
-  //     animal: '',
-  //     zip: '',
-  //     formErrors: {zip: '', animal: ''},
-  //     zipValid: false,
-  //     animalValid: true,
-  //     formValid: false,
-  //     redirect: '',
-  //   }
+  //   clearInterval(this.interval);
   // }
 
   render(){
