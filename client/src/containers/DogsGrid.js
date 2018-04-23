@@ -1,33 +1,34 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 
 import PetGridItem from '../components/PetGridItem'
 import LittlePup from '../lib/LittlePup.jpg'
 import Adopted from '../lib/Adopted.png'
 import AdoptedDogs from '../components/AdoptedDogs'
-import { adoptDog, clearGame, playGame, updatePhoto } from '../actions/dogActions'
+
 
 class DogsGrid extends Component {
 
     handleOnPlayAgain = event => {
       event.preventDefault(); 
+      const { actions } = this.props; 
 
-      this.props.clearGame();
-      this.props.playGame();
+      actions.clearGame();
+      actions.playGame();
     }
 
     handleOnClick = (event) => {
       event.preventDefault();
       const { id } = event.target;
       const dogs = this.props.dogGame
+      const { actions } = this.props; 
 
       const doggo = dogs.find( dog => dog.id === parseInt(id, 10) );
       if (doggo.photo !== "/static/media/LittlePup.df8ef6dd.jpg" && doggo.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedDog = Object.assign({}, doggo);
-        this.props.adoptDog(adoptedDog);
-        // doggo.photo = Adopted;
-        this.props.updatePhoto(doggo, Adopted)
+        actions.adoptDog(adoptedDog);
+        // doggo.photo = Adopted; -> don't do this, Redux state should be immutable 
+        actions.updatePhoto(doggo, Adopted)
 
         this.disappearDog(dogs);
 
@@ -38,11 +39,12 @@ class DogsGrid extends Component {
 
     disappearDog= (dogs) => {
       let replacement = this.replacementInd();
+      const { actions } = this.props; 
 
       if (dogs[replacement].photo !== "/static/media/LittlePup.df8ef6dd.jpg" && dogs[replacement].photo !== "/static/media/Adopted.e366e9ec.png") {
         let goneDog = dogs[replacement];
-        // goneDog.photo = LittlePup;
-        this.props.updatePhoto(goneDog, LittlePup)
+        // goneDog.photo = LittlePup; -> don't do this, Redux state should be immutable 
+        actions.updatePhoto(goneDog, LittlePup)
 
       } else if (dogs.find( dog => dog.photo !== "/static/media/LittlePup.df8ef6dd.jpg" && dog.photo !== "/static/media/Adopted.e366e9ec.png")) {
         this.disappearDog(dogs);
@@ -100,11 +102,4 @@ class DogsGrid extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    adoptedDogs: state.dogs.adoptedDogs,
-    dogGame: state.dogs.dogGame
-  };
-};
-
-export default connect(mapStateToProps, { adoptDog, clearGame, playGame, updatePhoto })(DogsGrid);
+export default DogsGrid;
