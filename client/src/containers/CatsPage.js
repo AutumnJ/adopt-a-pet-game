@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import CatsGrid from './CatsGrid'
 import { PetErrorPage } from '../components/PetErrorPage'
+import PetsGrid from '../components/PetsGrid'
 import { adoptCat, clearGame, playGame, updatePhoto } from '../actions/catActions'
+import IMG_5695 from '../lib/IMG_5695.jpg'
+import Adopted from '../lib/Adopted.png'
+import AdoptedPets from '../components/AdoptedPets'
 
 class CatsPage extends Component {
 
@@ -22,7 +25,18 @@ class CatsPage extends Component {
             <h1> /\___/\  KITTIES!  /\___/\</h1>
             <h2><small className="text-muted">Grab them before they disappear!</small></h2>
           </div>
-          <CatsGrid adoptedCats={this.props.adoptedCats} catGame={this.props.catGame} actions={this.props.actions} />
+          <PetsGrid 
+            gamePets={this.props.catGame} 
+            adopt={this.props.actions.adoptCat} 
+            updatePhoto={this.props.actions.updatePhoto}
+            clearGame={this.props.actions.clearGame}
+            playGame={this.props.actions.playGame}
+            adoptedImg={Adopted} 
+            adoptedImgStatic={"/static/media/Adopted.e366e9ec.png"} 
+            takenImg={IMG_5695} 
+            takenImgStatic={"/static/media/IMG_5695.7d23606d.jpg"} 
+            />
+          <AdoptedPets adopted={this.props.adoptedCats}/>
         </div>
       );
     }
