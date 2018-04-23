@@ -96,8 +96,20 @@ class QuestionPage extends Component {
           }
         }
       })(this, oldKitties), 500);
-
     }
+    this.setState({
+      animal: '',
+      zip: '',
+      formErrors: {zip: '', animal: ''},
+      zipValid: false,
+      animalValid: true,
+      formValid: false,
+      redirect: '',
+    })
+  }
+
+  componentWillUnMount() {
+
   }
 
   render(){
