@@ -35,7 +35,7 @@ class DogsPage extends Component {
             adoptedImgStatic={"/static/media/Adopted.e366e9ec.png"} 
             takenImg={LittlePup} 
             takenImgStatic={"/static/media/LittlePup.df8ef6dd.jpg"}
-            adopted={this.props.adoptedDogs}
+            // adopted={this.props.adoptedDogs}
             />
           <AdoptedPets adopted={this.props.adoptedDogs}/>
         </div>
