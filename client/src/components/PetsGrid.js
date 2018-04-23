@@ -23,15 +23,15 @@ class PetsGrid extends Component {
       this.props.adopt(adoptedPet);
       this.props.updatePhoto(animal, this.props.adoptedImg)
 
-      let interval = setInterval((function(self, animal){
+      this.interval = setInterval((function(self, animal){
         return function(){
           if (animal !== JSON.stringify(self.props.gamePets.find( pet => pet.id === parseInt(id, 10) ))) {
 
-            clearInterval(interval);
+            clearInterval(self.interval);
             self.disappearPet();
           }
         }
-      })(this, animal), 200);
+      })(this, animal), 100);
 
     } else {
       this.disappearPet();
@@ -43,12 +43,8 @@ class PetsGrid extends Component {
     const pets = this.props.gamePets;
 
     if (pets[replacement].photo !== this.props.takenImgStatic && pets[replacement].photo !== this.props.adoptedImgStatic) {
-      // if (this.props.adopted.find( pet => pet.id === replacement.id )) {
-      //   this.disappearPet();
-      // } else {
         let gonePet = pets[replacement];
         this.props.updatePhoto(gonePet, this.props.takenImg)
-      // }
     } else if (pets.find( pet => pet.photo !== this.props.takenImgStatic && pet.photo !== this.props.adoptedImgStatic)) {
       this.disappearPet();
     } else {
@@ -58,6 +54,12 @@ class PetsGrid extends Component {
 
   replacementInd() {
     return (Math.floor((Math.random() * 16) + 1) - 1);
+  }
+
+  componentWillUnmount() {
+    console.log("unmounting interval")
+    console.log(this.interval)
+    clearInterval(this.interval);
   }
 
   render(){
