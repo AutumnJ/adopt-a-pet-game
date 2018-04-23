@@ -57,9 +57,9 @@ class QuestionPage extends Component {
     this.setState({formValid: this.state.zipValid && this.state.animalValid});
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return (this.props !== nextProps || this.state !== nextState);
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return (this.props !== nextProps || this.state !== nextState);
+  // }
 
   handleOnSubmit = event => {
     event.preventDefault();
