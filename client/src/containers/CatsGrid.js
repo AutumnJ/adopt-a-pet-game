@@ -1,34 +1,34 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 
 import PetGridItem from '../components/PetGridItem'
 import IMG_5695 from '../lib/IMG_5695.jpg'
 import Adopted from '../lib/Adopted.png'
 import AdoptedCats from '../components/AdoptedCats'
-import { adoptCat, clearGame, playGame, updatePhoto } from '../actions/catActions'
 
 class CatsGrid extends Component {
 
     handleOnPlayAgain = event => {
       event.preventDefault(); 
+      const { actions } = this.props; 
 
-      this.props.clearGame();
-      this.props.playGame();
+      actions.clearGame();
+      actions.playGame();
     }
 
     handleOnClick = (event) => {
       event.preventDefault();
       const { id } = event.target;
-      const cats = this.props.catGame
+      const cats = this.props.catGame;
+      const { actions } = this.props; 
 
 
       const kitty = cats.find( cat => cat.id === parseInt(id, 10) );
       if (kitty.photo !== "/static/media/IMG_5695.7d23606d.jpg" && kitty.photo !== "/static/media/Adopted.e366e9ec.png") {
         let adoptedKitty = Object.assign({}, kitty);
-        this.props.adoptCat(adoptedKitty);
-        // kitty.photo = Adopted;
-        this.props.updatePhoto(kitty, Adopted)
+        actions.adoptCat(adoptedKitty);
+        // kitty.photo = Adopted; -> don't do this, Redux state should be immutable 
+        actions.updatePhoto(kitty, Adopted)
 
         this.disappearCat(cats);
 
@@ -39,11 +39,12 @@ class CatsGrid extends Component {
 
     disappearCat = (cats) => {
       let replacement = this.replacementInd();
+      const { actions } = this.props;
 
       if (cats[replacement].photo !== "/static/media/IMG_5695.7d23606d.jpg" && cats[replacement].photo !== "/static/media/Adopted.e366e9ec.png") {
         let goneKitty = cats[replacement];
-        // goneKitty.photo = IMG_5695;
-        this.props.updatePhoto(goneKitty, IMG_5695)
+        // goneKitty.photo = IMG_5695; -> don't do this, Redux state should be immutable 
+        actions.updatePhoto(goneKitty, IMG_5695)
 
       } else if (cats.find( cat => cat.photo !== "/static/media/IMG_5695.7d23606d.jpg" && cat.photo !== "/static/media/Adopted.e366e9ec.png")) {
         this.disappearCat(cats);
@@ -57,7 +58,7 @@ class CatsGrid extends Component {
     }
 
     render(){
-    const cats = this.props.catGame
+      const cats = this.props.catGame
 
       return (
         <div>
@@ -101,11 +102,4 @@ class CatsGrid extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    adoptedCats: state.cats.adoptedCats,
-    catGame: state.cats.catGame
-  };
-};
-
-export default connect(mapStateToProps, { adoptCat, clearGame, playGame, updatePhoto })(CatsGrid);
+export default CatsGrid;
