@@ -3,10 +3,11 @@ export default function catsReducer(state = {cats:[], randomCat:[], adoptedCats:
     case 'CREATE_CAT':
       //want to replace previous state, not concat onto it
       return Object.assign ({}, { ...state, cats: action.payload})
-    case 'ADD_CAT':
+    case 'RANDOM_CAT':
       //want to replace previous state, not concat onto it
       return Object.assign ({}, { ...state, randomCat: action.payload })
     case 'ADOPT_CAT':
+      console.log("pet adopted")
       return {...state, adoptedCats: state.adoptedCats.concat(action.payload)} 
     case 'CLEAR_CAT_GAME':
       return Object.assign({}, {...state, adoptedCats: [], catGame: []})
@@ -23,7 +24,9 @@ export default function catsReducer(state = {cats:[], randomCat:[], adoptedCats:
       //or could do action.payload.photo = action.update and return state
       //but that incorrectly modifies the existing object 
       cat.photo = action.update;
+
       const index = state.catGame.findIndex(c => c.id === cat.id);
+      console.log(action.update)
 
       return {...state, catGame: [...state.catGame.slice(0, index), cat, ...state.catGame.slice(index + 1)]}
     default:

@@ -13,7 +13,7 @@ const addCats = (cats) => {
 
 const getCat = (cat) => {
   return {
-    type: "ADD_CAT",
+    type: "RANDOM_CAT",
     payload: cat
   };
 };

@@ -10,7 +10,7 @@ const addDog = (dogs) => {
 
 const getDog = (dog) => {
   return {
-    type: "ADD_DOG",
+    type: "RANDOM_DOG",
     payload: dog
   };
 };

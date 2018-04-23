@@ -2,7 +2,7 @@ export default function dogsReducer(state = {dogs:[], randomDog: [], adoptedDogs
   switch (action.type) {
     case 'CREATE_DOG':
       return Object.assign ({}, { ...state, dogs: action.payload })
-    case 'ADD_DOG':
+    case 'RANDOM_DOG':
       return Object.assign ({}, { ...state, randomDog: action.payload })
     case 'ADOPT_DOG':
       return {...state, adoptedDogs: state.adoptedDogs.concat(action.payload)} 
