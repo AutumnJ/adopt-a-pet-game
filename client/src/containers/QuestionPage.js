@@ -24,6 +24,18 @@ class QuestionPage extends Component {
     }
   }
 
+  // componentWillMount() {
+  //   this.setState = {
+  //     animal: '',
+  //     zip: '',
+  //     formErrors: {zip: '', animal: ''},
+  //     zipValid: false,
+  //     animalValid: true,
+  //     formValid: false,
+  //     redirect: '',
+  //   }
+  // }
+
   handleOnChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -99,9 +111,17 @@ class QuestionPage extends Component {
     }
   }
 
-  componentWillUnMount() {
-
-  }
+  // componentWillUnmount() {
+  //   this.setState = {
+  //     animal: '',
+  //     zip: '',
+  //     formErrors: {zip: '', animal: ''},
+  //     zipValid: false,
+  //     animalValid: true,
+  //     formValid: false,
+  //     redirect: '',
+  //   }
+  // }
 
   render(){
     const { zip, animal, redirect } = this.state;
