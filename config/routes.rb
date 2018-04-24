@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #   resources :cats, :dogs, only: [:index, :create, :show]
   # end
 
-  resources :cats, only: [:create]
+  resources :cats, only: [:create, :index]
 
   get'/cats/random', to: 'cats#random'
   

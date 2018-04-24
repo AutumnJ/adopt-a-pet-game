@@ -1,11 +1,11 @@
 class CatsController < ApplicationController
 
   # Not currently using:
-  # def index
-  #   @cats = Cat.all
+  def index
+    @cats = Cat.first
 
-  #   render json: @cats
-  # end
+    render json: @cats
+  end
 
   def create
     cat = Cat.new(cat_params)
