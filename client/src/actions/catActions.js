@@ -4,6 +4,8 @@ import StockKitty from '../lib/StockKitty.png'
 // Test data:
 // import { staticCats } from '../data'
 
+//action creators 
+
 const addCats = (cats) => {
   return {
     type: "CREATE_CAT",
@@ -83,6 +85,8 @@ const createCat = (cat) => {
   .catch(error => console.log(error));
 
 }
+
+// thunk action creators/async actions -> inner function is called and given ref to dispatch
 
 // External API fetch
 export const fetchCats = (zip) => {

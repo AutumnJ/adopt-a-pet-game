@@ -75,7 +75,6 @@ class QuestionPage extends Component {
       this.interval = setInterval((function(self, oldDoggies){
         return function(){
           if (oldDoggies !== JSON.stringify(self.props.dogs[0]) && self.props.dogs[0]) {
-            console.log("in interval")
             self.setState({redirect: 'dog'});
           }
         }
@@ -90,7 +89,6 @@ class QuestionPage extends Component {
       this.interval = setInterval((function(self, oldKitties){
         return function(){
           if (oldKitties !== JSON.stringify(self.props.cats[0]) && self.props.cats[0]) {
-            console.log("in interval")
             self.setState({redirect: 'cat'});
           }
         }
@@ -99,13 +97,10 @@ class QuestionPage extends Component {
   }
 
   componentWillUnmount() {
-    console.log("unmounting interval")
-    console.log(this.interval)
     clearInterval(this.interval);
   }
 
   render(){
-    console.log("in render")
     const { zip, animal, redirect } = this.state;
 
     if (redirect === 'dog' || redirect === 'cat') {

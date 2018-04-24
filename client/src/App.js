@@ -25,7 +25,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-//MOVE INTO CONTAINERS or COMPONENTS?
-//REMOVE link to?

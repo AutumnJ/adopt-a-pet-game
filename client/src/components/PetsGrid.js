@@ -57,8 +57,6 @@ class PetsGrid extends Component {
   }
 
   componentWillUnmount() {
-    console.log("unmounting interval")
-    console.log(this.interval)
     clearInterval(this.interval);
   }
 
