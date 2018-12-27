@@ -18,6 +18,8 @@ The app will open at http://localhost:3000 in your browser.
 
 From the homepage, search for dogs or cats by zipcode. Click on an adoptable pet to see more details, but for every pet you choose one will go home with someone else! To see them again, hit "Play Again" or navigate to the homepage to search a different zip code or animal type. Head to the random pet page to see a random dog or cat from anywhere in the US!
 
+(Must enable cross-origin resource sharing when running locally)
+
 ## Postgresql
 
 Postgresql may need to be launched with `brew services start postgresql` For more information run `brew info postgres`.
